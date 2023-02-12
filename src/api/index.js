@@ -36,7 +36,6 @@ part=snippet&id=${playlistId}&key=${key}`;
   const { data } = await axios.get(URL);
   let playlistItems = await getPlaylistItem(playlistId);
 
-  // Destructuring informations for a playlist
   const {
     title: playlistTitle,
     description: playlistDescription,
@@ -45,7 +44,6 @@ part=snippet&id=${playlistId}&key=${key}`;
     channelTitle,
   } = data?.items[0]?.snippet;
 
-  // Modify playlistItems for a single video
   playlistItems = playlistItems.map((item) => {
     const {
       title,
