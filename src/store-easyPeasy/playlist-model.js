@@ -10,7 +10,7 @@ const playlistModel = persist({
   addPlaylist: action((state, payload) => {
     state.data[payload.playlistId] = payload;
   }),
-  //TODO: some than
+  //TODO: Create an action for Delete
   setError: action((state, payload) => {
     state.error = payload;
   }),

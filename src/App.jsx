@@ -1,4 +1,5 @@
 import React from "react";
+import CssBaseline from "@mui/material/CssBaseline";
 import getPlaylist from "./api";
 
 const App = () => {
@@ -10,9 +11,10 @@ const App = () => {
   a(id);
 
   return (
-    <div>
+    <>
+      <CssBaseline />
       <h1>New Project</h1>
-    </div>
+    </>
   );
 };
 
