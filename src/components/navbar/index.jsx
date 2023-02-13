@@ -2,9 +2,10 @@ import React, { useState } from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
-import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import PlaylistForm from "../playlist-form";
+import { Button } from "@mui/material";
+import AddIcon from "@mui/icons-material/Add";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
@@ -19,39 +20,59 @@ const Navbar = () => {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static" sx={{ backgroundColor: "#666" }}>
+      <AppBar position="static" sx={{ backgroundColor: "#444" }}>
         <Toolbar>
           <Typography
             variant="h6"
-            noWrap
-            component="div"
-            sx={{ display: { xs: "none", sm: "block" }, color: "#efefef" }}
+            sx={{
+              color: "#efefef",
+              userSelect: "none",
+              letterSpacing: "0.2rem",
+            }}
           >
             CLEAN YOUTUBE
           </Typography>
 
           <Box sx={{ flexGrow: 1 }} />
-          <Box sx={{ display: { xs: "none", md: "flex" } }}>
-            <IconButton onClick={handleClickOpen}>
-              <Typography variant="button" sx={{ color: "#efefef" }}>
+          <Box>
+            <Button
+              variant="outlined"
+              onClick={handleClickOpen}
+              sx={{ marginLeft: "1rem" }}
+            >
+              <Typography
+                variant="button"
+                sx={{ color: "#efefef", letterSpacing: "0.1rem" }}
+              >
                 Add Playlist
               </Typography>
-            </IconButton>
+            </Button>
+            <Button
+              variant="outlined"
+              onClick={handleClickOpen}
+              sx={{ marginLeft: "1rem" }}
+            >
+              <Typography
+                variant="button"
+                sx={{ color: "#efefef", letterSpacing: "0.1rem" }}
+              >
+                Add Playlist
+              </Typography>
+            </Button>
+            <Button
+              variant="outlined"
+              startIcon={<AddIcon sx={{ color: "#efefef" }} />}
+              onClick={handleClickOpen}
+              sx={{ marginLeft: "1rem" }}
+            >
+              <Typography
+                variant="button"
+                sx={{ color: "#efefef", letterSpacing: "0.1rem" }}
+              >
+                Add Playlist
+              </Typography>
+            </Button>
             <PlaylistForm open={open} handleClose={handleClose} />
-            {/* <IconButton
-              size="large"
-              aria-label="show 4 new mails"
-              color="inherit"
-            >
-              <Typography variant="body2">Search</Typography>
-            </IconButton>
-            <IconButton
-              size="large"
-              aria-label="show 17 new notifications"
-              color="inherit"
-            >
-              <Typography variant="body2">Search</Typography>
-            </IconButton> */}
           </Box>
         </Toolbar>
       </AppBar>
