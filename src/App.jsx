@@ -1,14 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useStoreActions } from "easy-peasy";
 import CssBaseline from "@mui/material/CssBaseline";
-import getPlaylist from "./api";
 
 const App = () => {
   const id = "PL_XxuZqN0xVDIlzHwTJr7IqIW1A2eECwy";
-  async function a(id) {
-    const { playlistTitle, playlistItems } = await getPlaylist(id);
-    console.log(playlistTitle, playlistItems);
-  }
-  a(id);
+  const playlist = useStoreActions((actions) => actions.playlists);
+
+  useEffect(() => {
+    // playlist.getPlaylist(id);
+    console.log(playlist.getPlaylist(id));
+  }, []);
 
   return (
     <>
