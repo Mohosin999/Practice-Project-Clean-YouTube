@@ -2,13 +2,13 @@ import React, { useEffect } from "react";
 import { useStoreActions } from "easy-peasy";
 import CssBaseline from "@mui/material/CssBaseline";
 
+const playlistId = "PL7E7DFtKYTnaRk_ABqufrz6-zJHYhMEsU";
+
 const App = () => {
-  const id = "PL_XxuZqN0xVDIlzHwTJr7IqIW1A2eECwy";
   const playlist = useStoreActions((actions) => actions.playlists);
 
   useEffect(() => {
-    // playlist.getPlaylist(id);
-    console.log(playlist.getPlaylist(id));
+    playlist.getPlaylist(playlistId);
   }, []);
 
   return (
