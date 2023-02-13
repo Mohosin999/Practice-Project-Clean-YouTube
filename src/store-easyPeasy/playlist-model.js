@@ -10,7 +10,9 @@ const playlistModel = persist({
   addPlaylist: action((state, payload) => {
     state.data[payload.playlistId] = payload;
   }),
-  //TODO: Create an action for Delete
+  removePlaylist: action((state, payload) => {
+    delete state.data[payload];
+  }),
   setError: action((state, payload) => {
     state.error = payload;
   }),
@@ -22,6 +24,7 @@ const playlistModel = persist({
     async ({ addPlaylist, setError, setLoading }, payload, { getState }) => {
       // getState is a function, payload means playlistId
       if (getState().data[payload]) {
+        alert("This Playlist Already Exist");
         return;
       }
       setLoading(true);
