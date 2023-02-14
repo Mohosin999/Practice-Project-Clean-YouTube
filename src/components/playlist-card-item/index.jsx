@@ -15,14 +15,12 @@ const PlaylistCardItem = ({
   channelTitle,
   playlistId,
 }) => {
-  const removePlaylist = useStoreActions(
-    (actions) => actions.playlists.removePlaylist
-  );
+  const { removePlaylist } = useStoreActions((actions) => actions.playlists);
 
   return (
     <Card
       sx={{
-        height: "100%",
+        height: "350px",
         display: "flex",
         flexDirection: "column",
         margin: 1,
@@ -32,12 +30,13 @@ const PlaylistCardItem = ({
         component="img"
         image={playlistThumbnail.url}
         alt={playlistTitle}
+        sx={{ height: "200px" }}
       />
       <CardContent>
-        <Typography variant="h6" color="text.primary">
+        <Typography variant="body1" color="text.primary">
           {`${
-            playlistTitle.length > 50
-              ? playlistTitle.substr(0, 50) + "..."
+            playlistTitle.length > 25
+              ? playlistTitle.substr(0, 25) + "..."
               : playlistTitle
           }`}
         </Typography>

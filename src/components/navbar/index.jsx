@@ -5,6 +5,7 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import PlaylistForm from "../playlist-form";
 import { Button } from "@mui/material";
+import { Container } from "@mui/system";
 // import { useMediaQuery } from "@mui/material";
 // import AddIcon from "@mui/icons-material/Add";
 
@@ -22,25 +23,27 @@ const Navbar = () => {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static" sx={{ backgroundColor: "#444" }}>
-        <Toolbar>
-          <Typography
-            variant="h6"
-            sx={{
-              color: "#efefef",
-              userSelect: "none",
-              letterSpacing: "0.2rem",
-            }}
-          >
-            CLEAN YOUTUBE
-          </Typography>
+      <AppBar position="fixed" sx={{ backgroundColor: "#444" }}>
+        <Container>
+          <Toolbar>
+            <Typography
+              variant="h6"
+              sx={{
+                color: "#efefef",
+                userSelect: "none",
+                letterSpacing: "0.2rem",
+              }}
+            >
+              CLEAN YOUTUBE
+            </Typography>
 
-          <Box sx={{ flexGrow: 1 }} />
-          <Box>
-            <Button onClick={handleClickOpen}>Add Playlist</Button>
-            <PlaylistForm open={open} handleClose={handleClose} />
-          </Box>
-        </Toolbar>
+            <Box sx={{ flexGrow: 1 }} />
+            <Box>
+              <Button onClick={handleClickOpen}>Add Playlist</Button>
+              <PlaylistForm open={open} handleClose={handleClose} />
+            </Box>
+          </Toolbar>
+        </Container>
       </AppBar>
     </Box>
   );

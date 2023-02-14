@@ -10,14 +10,13 @@ import DialogTitle from "@mui/material/DialogTitle";
 
 const PlaylistForm = ({ open, handleClose }) => {
   const [state, setState] = useState("");
-  //TODO: you can destructure these playlist {getPlaylist}
-  const playlist = useStoreActions((actions) => actions.playlists);
+  const { getPlaylist } = useStoreActions((actions) => actions.playlists);
 
   const handleSubmit = () => {
     if (!state) {
       alert("Invalid State");
     } else {
-      playlist.getPlaylist(state);
+      getPlaylist(state);
 
       setState("");
       handleClose();
