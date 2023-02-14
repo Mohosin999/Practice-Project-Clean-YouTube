@@ -7,12 +7,12 @@ import PlaylistForm from "../playlist-form";
 import { Button } from "@mui/material";
 import { Container } from "@mui/system";
 import DrawerComp from "../drawer";
-// import { useMediaQuery } from "@mui/material";
+import { useMediaQuery } from "@mui/material";
 // import AddIcon from "@mui/icons-material/Add";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
-  // const isSmallScreen = useMediaQuery("(max-width:735px)");
+  const isSmallScreen = useMediaQuery("(max-width:992px)");
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -27,34 +27,52 @@ const Navbar = () => {
       <AppBar position="fixed" sx={{ backgroundColor: "#444" }}>
         <Container>
           <Toolbar>
-            <Typography
-              variant="h6"
-              sx={{
-                color: "#efefef",
-                userSelect: "none",
-                letterSpacing: "0.2rem",
-              }}
-            >
-              CLEAN YOUTUBE
-            </Typography>
+            {isSmallScreen ? (
+              <>
+                <Typography
+                  variant="h6"
+                  sx={{
+                    color: "#efefef",
+                    userSelect: "none",
+                    letterSpacing: "0.2rem",
+                  }}
+                >
+                  CLEAN YOUTUBE
+                </Typography>
+                <Box sx={{ flexGrow: 1 }} />
+                <DrawerComp handleClickOpen={handleClickOpen} />
+              </>
+            ) : (
+              <>
+                <Typography
+                  variant="h6"
+                  sx={{
+                    color: "#efefef",
+                    userSelect: "none",
+                    letterSpacing: "0.2rem",
+                  }}
+                >
+                  CLEAN YOUTUBE
+                </Typography>
 
-            <Box sx={{ flexGrow: 1 }} />
-            <Box>
-              <Button sx={{ color: "#efefef", marginLeft: "1.5rem" }}>
-                Favorites
-              </Button>
-              <Button sx={{ color: "#efefef", marginLeft: "1.5rem" }}>
-                Recents
-              </Button>
-              <Button
-                sx={{ color: "#efefef", marginLeft: "1.5rem" }}
-                onClick={handleClickOpen}
-              >
-                Add Playlist
-              </Button>
-              <PlaylistForm open={open} handleClose={handleClose} />
-            </Box>
-            <DrawerComp />
+                <Box sx={{ flexGrow: 1 }} />
+                <Box>
+                  <Button sx={{ color: "#efefef", marginLeft: "1.5rem" }}>
+                    Favorites
+                  </Button>
+                  <Button sx={{ color: "#efefef", marginLeft: "1.5rem" }}>
+                    Recents
+                  </Button>
+                  <Button
+                    sx={{ color: "#efefef", marginLeft: "1.5rem" }}
+                    onClick={handleClickOpen}
+                  >
+                    Add Playlist
+                  </Button>
+                  <PlaylistForm open={open} handleClose={handleClose} />
+                </Box>
+              </>
+            )}
           </Toolbar>
         </Container>
       </AppBar>

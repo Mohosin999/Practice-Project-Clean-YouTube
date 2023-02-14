@@ -19,7 +19,7 @@ const App = () => {
         {playlistArray.length > 0 && (
           <Grid container alignItems="stretch">
             {playlistArray.map((item) => (
-              <Grid item xs={12} md={4} lg={3} mb={2}>
+              <Grid item xs={12} sm={6} md={4} lg={3} mb={2}>
                 <PlaylistCardItem
                   key={item.playlistId}
                   playlistId={item.playlistId}

@@ -9,18 +9,22 @@ import {
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 
-const DrawerComp = () => {
+const PAGES = ["Recents", "Favorites", "Add Playlist", "Akash"];
+
+const DrawerComp = ({ handleClickOpen }) => {
   const [openDrawer, setOpenDrawer] = useState(false);
 
   return (
     <>
-      <Drawer open={openDrawer} onClose={() => setOpenDrawer(false)}>
+      <Drawer
+        open={openDrawer}
+        onClose={() => setOpenDrawer(false)}
+        anchor={"right"}
+      >
         <List>
-          <ListItemButton>
-            <ListItemIcon>
-              <ListItemText>Add Somethings hgahaighagh</ListItemText>
-            </ListItemIcon>
-          </ListItemButton>
+          <ListItemButton>Recents</ListItemButton>
+          <ListItemButton onClick={handleClickOpen}>Add</ListItemButton>
+          <ListItemButton>Recents</ListItemButton>
         </List>
       </Drawer>
       <IconButton onClick={() => setOpenDrawer(!openDrawer)}>
