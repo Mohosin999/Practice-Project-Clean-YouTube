@@ -41,6 +41,7 @@ const Navbar = () => {
                 </Typography>
                 <Box sx={{ flexGrow: 1 }} />
                 <DrawerComp handleClickOpen={handleClickOpen} />
+                <PlaylistForm open={open} handleClose={handleClose} />
               </>
             ) : (
               <>

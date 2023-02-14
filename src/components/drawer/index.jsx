@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import {
+  Button,
   Drawer,
   IconButton,
   List,
@@ -21,10 +22,17 @@ const DrawerComp = ({ handleClickOpen }) => {
         onClose={() => setOpenDrawer(false)}
         anchor={"right"}
       >
-        <List>
-          <ListItemButton>Recents</ListItemButton>
-          <ListItemButton onClick={handleClickOpen}>Add</ListItemButton>
-          <ListItemButton>Recents</ListItemButton>
+        <List sx={{ backgroundColor: "green", height: "100%" }}>
+          <div style={{ display: "flex", flexDirection: "column" }}>
+            <Button sx={{ color: "#efefef", margin: "1rem" }}>Favorites</Button>
+            <Button sx={{ color: "#efefef", margin: "1rem" }}>Recents</Button>
+            <Button
+              onClick={handleClickOpen}
+              sx={{ color: "#efefef", margin: "1rem" }}
+            >
+              Add Playlist
+            </Button>
+          </div>
         </List>
       </Drawer>
       <IconButton onClick={() => setOpenDrawer(!openDrawer)}>
