@@ -1,11 +1,11 @@
-import React from "react";
+// import React from "react";
 
-const HomePage = () => {
-  return (
-    <div style={{ marginTop: "4rem" }}>
-      <h2>I am who?</h2>
-    </div>
-  );
-};
+// const HomePage = () => {
+//   return (
+//     <div style={{ marginTop: "4rem" }}>
+//       <h2>I am who?</h2>
+//     </div>
+//   );
+// };
 
-export default HomePage;
+// export default HomePage;

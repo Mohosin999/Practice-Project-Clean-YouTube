@@ -5,7 +5,7 @@ import Navbar from "./components/navbar";
 import PlaylistCardItem from "./components/playlist-card-item";
 import { Grid } from "@mui/material";
 import { Container } from "@mui/system";
-import HomePage from "./components/home-page";
+// import HomePage from "./components/home-page";
 
 const App = () => {
   const { data } = useStoreState((state) => state.playlists);
@@ -16,7 +16,7 @@ const App = () => {
     <>
       <CssBaseline />
       <Navbar />
-      <HomePage />
+      {/* <HomePage /> */}
       <Container maxWidth={"lg"} sx={{ marginTop: 12 }}>
         {playlistArray.length > 0 && (
           <Grid container alignItems="stretch">
