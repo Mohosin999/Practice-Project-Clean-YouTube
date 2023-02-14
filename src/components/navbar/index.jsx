@@ -4,8 +4,11 @@ import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import PlaylistForm from "../playlist-form";
-import { Button, useMediaQuery } from "@mui/material";
+import { useMediaQuery } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
+import HistoryIcon from "@mui/icons-material/History";
+import FavoriteIcon from "@mui/icons-material/Favorite";
+import ButtonComponent from "../UI/ButtonComponent";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
@@ -38,56 +41,35 @@ const Navbar = () => {
 
           <Box sx={{ flexGrow: 1 }} />
           <Box>
-            <Button
-              variant="outlined"
-              onClick={handleClickOpen}
+            <ButtonComponent
+              text={"Favorite"}
+              startIcon={<FavoriteIcon />}
+              variant={"contained"}
+              handleClickOpen={handleClickOpen}
+              sx={{ color: "#efefef", letterSpacing: "0.1rem" }}
+            />
+            <ButtonComponent
+              text={"Recent"}
+              startIcon={<HistoryIcon />}
+              variant={"contained"}
+              handleClickOpen={handleClickOpen}
               sx={{
-                marginLeft: isSmallScreen ? 0 : 1,
-                mb: isSmallScreen ? 1 : 0,
+                color: "#efefef",
+                letterSpacing: "0.1rem",
+                marginLeft: "1rem",
               }}
-            >
-              <Typography
-                variant="button"
-                sx={{ color: "#efefef", letterSpacing: "0.1rem" }}
-              >
-                Add Playlist
-              </Typography>
-            </Button>
-            <Button
-              variant="outlined"
-              onClick={handleClickOpen}
-              sx={{
-                marginLeft: isSmallScreen ? 0 : 1,
-                mb: isSmallScreen ? 1 : 0,
-              }}
-            >
-              <Typography
-                variant="button"
-                sx={{ color: "#efefef", letterSpacing: "0.1rem" }}
-              >
-                Add Playlist
-              </Typography>
-            </Button>
-            <Button
-              variant="outlined"
+            />
+            <ButtonComponent
+              text={"Add Button"}
               startIcon={<AddIcon sx={{ color: "#efefef" }} />}
-              onClick={handleClickOpen}
+              variant={"contained"}
+              handleClickOpen={handleClickOpen}
               sx={{
-                marginLeft: isSmallScreen ? 0 : 1,
-                mb: isSmallScreen ? 1 : 0,
+                color: "#efefef",
+                letterSpacing: "0.1rem",
+                marginLeft: "1rem",
               }}
-              // sx={{
-              //   marginLeft: "1rem",
-              //   "&:hover": { backgroundColor: "green" },
-              // }}
-            >
-              <Typography
-                variant="button"
-                sx={{ color: "#efefef", letterSpacing: "0.1rem" }}
-              >
-                Add Playlist
-              </Typography>
-            </Button>
+            />
             <PlaylistForm open={open} handleClose={handleClose} />
           </Box>
         </Toolbar>
