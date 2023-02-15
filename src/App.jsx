@@ -7,7 +7,7 @@ import HomePage from "./components/home-page";
 import NotFound from "./components/not-found";
 import PlayerPage from "./components/player-page";
 import Favorites from "./components/favorites";
-import Recents from "./components/favorites/recents";
+import Recents from "./components/recents";
 
 const App = () => {
   const { data } = useStoreState((state) => state.playlists);
