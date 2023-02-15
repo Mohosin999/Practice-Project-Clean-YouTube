@@ -5,7 +5,7 @@ import CssBaseline from "@mui/material/CssBaseline";
 import Navbar from "./components/navbar";
 import HomePage from "./components/home-page";
 import NotFound from "./components/not-found";
-import PlayerPage from "./api/player-page";
+import PlayerPage from "./components/player-page";
 
 const App = () => {
   const { data } = useStoreState((state) => state.playlists);
@@ -18,7 +18,10 @@ const App = () => {
       <Navbar />
       <Routes>
         <Route path="/" element={<HomePage playlistArray={playlistArray} />} />
-        <Route path="/player" element={<PlayerPage />} />
+        <Route
+          path="/player/:playlistId"
+          element={<PlayerPage data={data} />}
+        />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>

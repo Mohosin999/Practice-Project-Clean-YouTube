@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { useStoreActions } from "easy-peasy";
 import Card from "@mui/material/Card";
 import CardMedia from "@mui/material/CardMedia";
@@ -46,11 +47,11 @@ const PlaylistCardItem = ({
       </CardContent>
       <Box sx={{ flexGrow: 1 }}></Box>
       <CardActions disableSpacing>
-        <Button>
+        <Button to={`/player/${playlistId}`} component={Link}>
           <Stack direction={"row"} spacing={1} alignItems={"center"}>
             <PlayCircleOutline />
             <Typography variant="body2" fontWeight={600}>
-              Start Tutorial
+              View Playlist
             </Typography>
           </Stack>
         </Button>

@@ -31,14 +31,18 @@ const Navbar = () => {
           <Toolbar>
             {isSmallScreen ? (
               <>
-                <Link to="/" component={RouterLink}>
+                <Link
+                  to="/"
+                  component={RouterLink}
+                  sx={{ textDecoration: "none" }}
+                >
                   <Typography
                     variant="h6"
-                    // sx={{
-                    //   color: "#efefef",
-                    //   userSelect: "none",
-                    //   letterSpacing: "0.2rem",
-                    // }}
+                    sx={{
+                      color: "#efefef",
+                      userSelect: "none",
+                      letterSpacing: "0.2rem",
+                    }}
                   >
                     CLEAN YOUTUBE
                   </Typography>
@@ -49,14 +53,18 @@ const Navbar = () => {
               </>
             ) : (
               <>
-                <Link to="/" component={RouterLink}>
+                <Link
+                  to="/"
+                  component={RouterLink}
+                  sx={{ textDecoration: "none" }}
+                >
                   <Typography
                     variant="h6"
-                    // sx={{
-                    //   color: "#efefef",
-                    //   userSelect: "none",
-                    //   letterSpacing: "0.2rem",
-                    // }}
+                    sx={{
+                      color: "#efefef",
+                      userSelect: "none",
+                      letterSpacing: "0.2rem",
+                    }}
                   >
                     CLEAN YOUTUBE
                   </Typography>
