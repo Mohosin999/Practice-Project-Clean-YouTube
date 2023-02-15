@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { Link as RouterLink } from "react-router-dom";
+import Link from "@mui/material/Link";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -29,33 +31,36 @@ const Navbar = () => {
           <Toolbar>
             {isSmallScreen ? (
               <>
-                <Typography
-                  variant="h6"
-                  sx={{
-                    color: "#efefef",
-                    userSelect: "none",
-                    letterSpacing: "0.2rem",
-                  }}
-                >
-                  CLEAN YOUTUBE
-                </Typography>
+                <Link to="/" component={RouterLink}>
+                  <Typography
+                    variant="h6"
+                    // sx={{
+                    //   color: "#efefef",
+                    //   userSelect: "none",
+                    //   letterSpacing: "0.2rem",
+                    // }}
+                  >
+                    CLEAN YOUTUBE
+                  </Typography>
+                </Link>
                 <Box sx={{ flexGrow: 1 }} />
                 <DrawerComp handleClickOpen={handleClickOpen} />
                 <PlaylistForm open={open} handleClose={handleClose} />
               </>
             ) : (
               <>
-                <Typography
-                  variant="h6"
-                  sx={{
-                    color: "#efefef",
-                    userSelect: "none",
-                    letterSpacing: "0.2rem",
-                  }}
-                >
-                  CLEAN YOUTUBE
-                </Typography>
-
+                <Link to="/" component={RouterLink}>
+                  <Typography
+                    variant="h6"
+                    // sx={{
+                    //   color: "#efefef",
+                    //   userSelect: "none",
+                    //   letterSpacing: "0.2rem",
+                    // }}
+                  >
+                    CLEAN YOUTUBE
+                  </Typography>
+                </Link>
                 <Box sx={{ flexGrow: 1 }} />
                 <Box>
                   <Button sx={{ color: "#efefef", marginLeft: "1.5rem" }}>
