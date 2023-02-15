@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import {
   Button,
   Drawer,
@@ -24,8 +25,20 @@ const DrawerComp = ({ handleClickOpen }) => {
       >
         <List sx={{ backgroundColor: "green", height: "100%" }}>
           <div style={{ display: "flex", flexDirection: "column" }}>
-            <Button sx={{ color: "#efefef", margin: "1rem" }}>Favorites</Button>
-            <Button sx={{ color: "#efefef", margin: "1rem" }}>Recents</Button>
+            <Button
+              to="favorites"
+              component={Link}
+              sx={{ color: "#efefef", margin: "1rem" }}
+            >
+              Favorites
+            </Button>
+            <Button
+              to="recents"
+              component={Link}
+              sx={{ color: "#efefef", margin: "1rem" }}
+            >
+              Recents
+            </Button>
             <Button
               onClick={handleClickOpen}
               sx={{ color: "#efefef", margin: "1rem" }}

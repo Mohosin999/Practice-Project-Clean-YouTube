@@ -9,6 +9,8 @@ import Typography from "@mui/material/Typography";
 import { Button } from "@mui/material";
 import { PlayCircleOutline } from "@mui/icons-material";
 import { Box, Stack } from "@mui/system";
+import DeleteIcon from "@mui/icons-material/Delete";
+import FavoriteIcon from "@mui/icons-material/Favorite";
 
 const PlaylistCardItem = ({
   playlistThumbnail,
@@ -28,7 +30,8 @@ const PlaylistCardItem = ({
       }}
     >
       <CardMedia
-        component="img"
+        to={`/player/${playlistId}`}
+        component={Link}
         image={playlistThumbnail.url}
         alt={playlistTitle}
         sx={{ height: "200px" }}
@@ -55,7 +58,13 @@ const PlaylistCardItem = ({
             </Typography>
           </Stack>
         </Button>
-        <Button onClick={() => removePlaylist(playlistId)}>Delete</Button>
+        <Stack direction={"row"} sx={{ marginLeft: "auto" }}>
+          <FavoriteIcon />
+          <DeleteIcon
+            onClick={() => removePlaylist(playlistId)}
+            sx={{ cursor: "pointer", color: "green", marginLeft: "0.8rem" }}
+          />
+        </Stack>
       </CardActions>
     </Card>
   );

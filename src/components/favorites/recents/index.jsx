@@ -1,0 +1,17 @@
+import React from "react";
+import { Typography } from "@mui/material";
+import { Container } from "@mui/system";
+
+const Recents = () => {
+  return (
+    <div>
+      <Container maxWidth={"lg"} sx={{ marginTop: 16 }}>
+        <Typography variant="h2" align="center">
+          I am Recent Area
+        </Typography>
+      </Container>
+    </div>
+  );
+};
+
+export default Recents;

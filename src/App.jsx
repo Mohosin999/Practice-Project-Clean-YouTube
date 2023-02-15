@@ -6,6 +6,8 @@ import Navbar from "./components/navbar";
 import HomePage from "./components/home-page";
 import NotFound from "./components/not-found";
 import PlayerPage from "./components/player-page";
+import Favorites from "./components/favorites";
+import Recents from "./components/favorites/recents";
 
 const App = () => {
   const { data } = useStoreState((state) => state.playlists);
@@ -22,6 +24,8 @@ const App = () => {
           path="/player/:playlistId"
           element={<PlayerPage data={data} />}
         />
+        <Route path="/favorites" element={<Favorites />} />
+        <Route path="/recents" element={<Recents />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>

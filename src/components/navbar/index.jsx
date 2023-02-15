@@ -71,10 +71,18 @@ const Navbar = () => {
                 </Link>
                 <Box sx={{ flexGrow: 1 }} />
                 <Box>
-                  <Button sx={{ color: "#efefef", marginLeft: "1.5rem" }}>
+                  <Button
+                    to="/favorites"
+                    component={RouterLink}
+                    sx={{ color: "#efefef", marginLeft: "1.5rem" }}
+                  >
                     Favorites
                   </Button>
-                  <Button sx={{ color: "#efefef", marginLeft: "1.5rem" }}>
+                  <Button
+                    to="/recents"
+                    component={RouterLink}
+                    sx={{ color: "#efefef", marginLeft: "1.5rem" }}
+                  >
                     Recents
                   </Button>
                   <Button
