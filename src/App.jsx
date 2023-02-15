@@ -4,6 +4,8 @@ import { useStoreState } from "easy-peasy";
 import CssBaseline from "@mui/material/CssBaseline";
 import Navbar from "./components/navbar";
 import HomePage from "./components/home-page";
+import NotFound from "./components/not-found";
+import PlayerPage from "./api/player-page";
 
 const App = () => {
   const { data } = useStoreState((state) => state.playlists);
@@ -16,29 +18,11 @@ const App = () => {
       <Navbar />
       <Routes>
         <Route path="/" element={<HomePage playlistArray={playlistArray} />} />
+        <Route path="/player" element={<PlayerPage />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   );
 };
 
 export default App;
-
-// <>
-//   <CssBaseline />
-//   <Navbar />
-//   {playlistArray.length > 0 && (
-//     <Grid container alignItems="stretch">
-//       playlistArray.map((item) => (
-//       <Grid item xs={12} md={6} lg={4} mb={2}>
-//         <PlaylistCardItem
-//           key={item.playlistId}
-//           playlistId={item.playlistId}
-//           playlistTitle={item.playlistTitle}
-//           channelTitle={item.channelTitle}
-//           playlistThumbnail={item.playlistThumbnail}
-//         />
-//       </Grid>
-//       ))}
-//     </Grid>
-//   )}
-// </>
