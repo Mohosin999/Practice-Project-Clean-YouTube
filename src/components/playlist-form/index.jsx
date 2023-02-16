@@ -17,7 +17,6 @@ const PlaylistForm = ({ open, handleClose }) => {
       alert("Invalid State");
     } else {
       getPlaylist(state);
-
       setState("");
       handleClose();
     }
