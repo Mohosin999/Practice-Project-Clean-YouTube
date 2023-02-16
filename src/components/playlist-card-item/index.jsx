@@ -7,7 +7,7 @@ import CardContent from "@mui/material/CardContent";
 import CardActions from "@mui/material/CardActions";
 import Typography from "@mui/material/Typography";
 import { Button } from "@mui/material";
-import { PlayCircleOutline } from "@mui/icons-material";
+import { AddToHomeScreenRounded, PlayCircleOutline } from "@mui/icons-material";
 import { Box, Stack } from "@mui/system";
 import DeleteIcon from "@mui/icons-material/Delete";
 import FavoriteIcon from "@mui/icons-material/Favorite";
@@ -20,6 +20,7 @@ const PlaylistCardItem = ({
 }) => {
   const { removePlaylist } = useStoreActions((actions) => actions.playlists);
   const { addToFavorite } = useStoreActions((actions) => actions.favorites);
+  const { addToRecent } = useStoreActions((actions) => actions.recents);
 
   return (
     <Card
@@ -36,6 +37,7 @@ const PlaylistCardItem = ({
         image={playlistThumbnail.url}
         alt={playlistTitle}
         sx={{ height: "200px" }}
+        onClick={() => addToRecent(playlistId)}
       />
       <CardContent>
         <Typography variant="body1" color="text.primary">
@@ -49,16 +51,22 @@ const PlaylistCardItem = ({
           {channelTitle}
         </Typography>
       </CardContent>
+
       <Box sx={{ flexGrow: 1 }}></Box>
       <CardActions disableSpacing>
-        <Button to={`/player/${playlistId}`} component={Link}>
+        <Button
+          to={`/player/${playlistId}`}
+          component={Link}
+          onClick={() => addToRecent(playlistId)}
+        >
           <Stack direction={"row"} spacing={1} alignItems={"center"}>
             <PlayCircleOutline />
             <Typography variant="body2" fontWeight={600}>
-              View
+              View Playlist
             </Typography>
           </Stack>
         </Button>
+
         <Stack direction={"row"} sx={{ marginLeft: "auto" }}>
           <FavoriteIcon
             onClick={() => addToFavorite(playlistId)}
