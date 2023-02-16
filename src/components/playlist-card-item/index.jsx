@@ -10,7 +10,7 @@ import { Button } from "@mui/material";
 import { PlayCircleOutline } from "@mui/icons-material";
 import { Box, Stack } from "@mui/system";
 import DeleteIcon from "@mui/icons-material/Delete";
-// import FavoriteIcon from "@mui/icons-material/Favorite";
+import FavoriteIcon from "@mui/icons-material/Favorite";
 
 const PlaylistCardItem = ({
   playlistThumbnail,
@@ -19,6 +19,7 @@ const PlaylistCardItem = ({
   playlistId,
 }) => {
   const { removePlaylist } = useStoreActions((actions) => actions.playlists);
+  const { addToFavorite } = useStoreActions((actions) => actions.favorites);
 
   return (
     <Card
@@ -54,12 +55,15 @@ const PlaylistCardItem = ({
           <Stack direction={"row"} spacing={1} alignItems={"center"}>
             <PlayCircleOutline />
             <Typography variant="body2" fontWeight={600}>
-              View Playlist
+              View
             </Typography>
           </Stack>
         </Button>
         <Stack direction={"row"} sx={{ marginLeft: "auto" }}>
-          {/* <FavoriteIcon /> */}
+          <FavoriteIcon
+            onClick={() => addToFavorite(playlistId)}
+            sx={{ cursor: "pointer", color: "red", marginLeft: "0.8rem" }}
+          />
           <DeleteIcon
             onClick={() => removePlaylist(playlistId)}
             sx={{ cursor: "pointer", color: "green", marginLeft: "0.8rem" }}
