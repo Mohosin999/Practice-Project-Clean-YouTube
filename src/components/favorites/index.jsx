@@ -7,9 +7,8 @@ import { Grid } from "@mui/material";
 const Favorites = () => {
   const { data } = useStoreState((state) => state.playlists);
   const { items } = useStoreState((state) => state.favorites);
-  const itemId = items[items.length - 1];
-
-  const itemObj = data[itemId];
+  const itemArray = [];
+  items.forEach((item) => itemArray.push(data[item]));
 
   const { removeFromFavorite } = useStoreActions(
     (actions) => actions.favorites
@@ -18,20 +17,21 @@ const Favorites = () => {
   return (
     <div>
       <Container maxWidth={"lg"} sx={{ marginTop: 12 }}>
-        <Grid container alignItems="stretch">
-          <Grid item xs={12} sm={6} md={4} lg={3} mb={2}>
-            <PlaylistCardItem
-              key={itemObj.playlistId}
-              playlistId={itemObj.playlistId}
-              playlistThumbnail={itemObj.playlistThumbnail}
-              playlistTitle={itemObj.playlistTitle}
-              channelTitle={itemObj.channelTitle}
-            />
-            <button onClick={() => removeFromFavorite(itemObj.playlistId)}>
-              Remove From Favorite
-            </button>
+        {itemArray.length > 0 && (
+          <Grid container alignItems="stretch">
+            {itemArray.map((item) => (
+              <Grid item xs={12} sm={6} md={4} lg={3} mb={2}>
+                <PlaylistCardItem
+                  key={item.playlistId}
+                  playlistId={item.playlistId}
+                  playlistThumbnail={item.playlistThumbnail}
+                  playlistTitle={item.playlistTitle}
+                  channelTitle={item.channelTitle}
+                />
+              </Grid>
+            ))}
           </Grid>
-        </Grid>
+        )}
       </Container>
     </div>
   );
