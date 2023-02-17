@@ -2,6 +2,8 @@ import React from "react";
 import PlaylistCardItem from "../playlist-card-item";
 import { Grid } from "@mui/material";
 import { Container } from "@mui/system";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const HomePage = ({ playlistArray }) => {
   return (
@@ -24,6 +26,7 @@ const HomePage = ({ playlistArray }) => {
           </Grid>
         )}
       </Container>
+      <ToastContainer />
     </>
   );
 };

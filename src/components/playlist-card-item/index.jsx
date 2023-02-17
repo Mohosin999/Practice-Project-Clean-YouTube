@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useStoreActions } from "easy-peasy";
 import Card from "@mui/material/Card";
@@ -21,17 +21,19 @@ const PlaylistCardItem = ({
   playlistId,
   path,
 }) => {
-  // These useState,handleOpen & handleClose function for Snackbar
-  const [open, setOpen] = React.useState(false);
-  const handleOpen = () => {
-    setOpen(true);
-  };
-  const handleClose = (event, reason) => {
-    if (reason === "clickaway") {
-      return;
-    }
-    setOpen(false);
-  };
+  // const [open, setOpen] = useState(false);
+
+  // const handleClick = () => {
+  //   setOpen(true);
+  // };
+
+  // const handleClose = (event, reason) => {
+  //   if (reason === "clickaway") {
+  //     return;
+  //   }
+
+  //   setOpen(false);
+  // };
 
   // These information from main store
   const { removePlaylist } = useStoreActions((actions) => actions.playlists);
@@ -40,6 +42,21 @@ const PlaylistCardItem = ({
   const { removeFromFavorite } = useStoreActions(
     (actions) => actions.favorites
   );
+
+  // const handleAddToFavorite = () => {
+  //   addToFavorite(playlistId);
+  //   handleClick();
+  // };
+
+  // const handleRemoveFromFavorite = () => {
+  //   removeFromFavorite(playlistId);
+  //   handleClick();
+  // };
+
+  // const handleRemovePlaylist = () => {
+  //   removePlaylist(playlistId);
+  //   handleClick();
+  // };
 
   return (
     <Card
@@ -93,37 +110,40 @@ const PlaylistCardItem = ({
             {/* Favorite icon */}
             <FavoriteIcon
               titleAccess="Add to Favorite"
-              onClick={handleOpen}
+              // onClick={handleAddToFavorite}
               onClick={() => addToFavorite(playlistId)}
               sx={{ cursor: "pointer", color: "#EA2027", marginLeft: "0.8rem" }}
             />
-            {/* Sncakbar for favorites */}
-            <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+            {/* <Snackbar open={open} autoHideDuration={3000} onClose={handleClose}>
               <MuiAlert
+                elevation={6}
+                variant="filled"
                 onClose={handleClose}
                 severity="success"
                 sx={{ width: "100%" }}
               >
-                Added to Favorites
+                Successfully Added to Favorite!
               </MuiAlert>
-            </Snackbar>
+            </Snackbar> */}
+
             {/* Delete icon */}
             <DeleteIcon
               titleAccess="Delete Playlist"
               onClick={() => removePlaylist(playlistId)}
-              onClick={handleOpen}
+              // onClick={handleRemovePlaylist}
               sx={{ cursor: "pointer", color: "#1B9CFC", marginLeft: "0.8rem" }}
             />
-            {/* Snackbar for delete  */}
-            <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+            {/* <Snackbar open={open} autoHideDuration={3000} onClose={handleClose}>
               <MuiAlert
+                elevation={6}
+                variant="filled"
                 onClose={handleClose}
                 severity="success"
                 sx={{ width: "100%" }}
               >
-                Deleted Successfully
+                Action Successful!
               </MuiAlert>
-            </Snackbar>
+            </Snackbar> */}
           </Stack>
         )}
         {/* This logic for favoritepage button */}
@@ -132,19 +152,20 @@ const PlaylistCardItem = ({
             <DeleteIcon
               titleAccess="Remove from Favorite"
               onClick={() => removeFromFavorite(playlistId)}
-              onClick={handleOpen}
+              // onClick={handleRemoveFromFavorite}
               sx={{ cursor: "pointer", color: "#1B9CFC", marginLeft: "auto" }}
             />
-            {/* Snackbar for delete */}
-            <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+            {/* <Snackbar open={open} autoHideDuration={3000} onClose={handleClose}>
               <MuiAlert
+                elevation={6}
+                variant="filled"
                 onClose={handleClose}
                 severity="success"
                 sx={{ width: "100%" }}
               >
-                Deleted Successfully
+                Action Successful!
               </MuiAlert>
-            </Snackbar>
+            </Snackbar> */}
           </>
         )}
         {/* This logic for recentpage button */}
