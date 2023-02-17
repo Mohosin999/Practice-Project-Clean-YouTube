@@ -1,5 +1,4 @@
 import { action, thunk, persist } from "easy-peasy";
-import { toast } from "react-toastify";
 import getPlaylist from "../api";
 
 const playlistModel = persist({
@@ -13,7 +12,6 @@ const playlistModel = persist({
   }),
   removePlaylist: action((state, payload) => {
     delete state.data[payload];
-    toast.info("Playlist Deleted!");
   }),
   setError: action((state, payload) => {
     state.error = payload;
