@@ -10,10 +10,6 @@ const Favorites = () => {
   const itemArray = [];
   items.forEach((item) => itemArray.push(data[item]));
 
-  const { removeFromFavorite } = useStoreActions(
-    (actions) => actions.favorites
-  );
-
   return (
     <div>
       <Container maxWidth={"lg"} sx={{ marginTop: 12 }}>
@@ -27,6 +23,7 @@ const Favorites = () => {
                   playlistThumbnail={item.playlistThumbnail}
                   playlistTitle={item.playlistTitle}
                   channelTitle={item.channelTitle}
+                  path={"favorites"}
                 />
               </Grid>
             ))}

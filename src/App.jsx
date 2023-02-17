@@ -13,7 +13,6 @@ const App = () => {
   const { data } = useStoreState((state) => state.playlists);
 
   const playlistArray = Object.values(data);
-  console.log(playlistArray);
 
   return (
     <BrowserRouter>

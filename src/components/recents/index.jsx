@@ -23,6 +23,7 @@ const Recents = () => {
                   playlistThumbnail={item.playlistThumbnail}
                   playlistTitle={item.playlistTitle}
                   channelTitle={item.channelTitle}
+                  path={"recents"}
                 />
               </Grid>
             ))}

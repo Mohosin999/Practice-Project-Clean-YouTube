@@ -13,6 +13,7 @@ const PlayerPage = () => {
   if (!current) return;
 
   const videoItemArray = current.playlistItems;
+  console.log(videoItemArray);
 
   return (
     <div>

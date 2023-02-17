@@ -14,7 +14,7 @@ const VideoCardItem = ({ title, thumbnails }) => {
   return (
     <Card
       sx={{
-        height: "300px",
+        height: "300",
         display: "flex",
         flexDirection: "column",
         margin: 1,
@@ -25,11 +25,11 @@ const VideoCardItem = ({ title, thumbnails }) => {
         component="img"
         image={thumbnails.url}
         alt={title}
-        sx={{ height: "200px" }}
+        sx={{ height: "180", width: "320" }}
       />
       <CardContent>
         <Typography variant="body1" color="text.primary">
-          {`${title.length > 55 ? title.substr(0, 55) + "..." : title}`}
+          {`${title.length > 50 ? title.substr(0, 50) + "..." : title}`}
         </Typography>
       </CardContent>
     </Card>

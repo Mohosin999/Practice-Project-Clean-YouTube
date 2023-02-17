@@ -17,6 +17,7 @@ const HomePage = ({ playlistArray }) => {
                   playlistThumbnail={item.playlistThumbnail}
                   playlistTitle={item.playlistTitle}
                   channelTitle={item.channelTitle}
+                  path={"home"}
                 />
               </Grid>
             ))}
