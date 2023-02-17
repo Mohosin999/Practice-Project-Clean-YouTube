@@ -20,13 +20,16 @@ const App = () => {
       <CssBaseline />
       <Navbar />
       <Routes>
+        {/* Routes for homepage */}
         <Route path="/" element={<HomePage playlistArray={playlistArray} />} />
-        <Route
-          path="/player/:playlistId"
-          element={<PlayerPage data={data} />}
-        />
+
+        {/* * Routes for every single playlist */}
+        <Route path="/player/:playlistId" element={<PlayerPage />} />
+
         <Route path="/favorites" element={<Favorites />} />
         <Route path="/recents" element={<Recents />} />
+
+        {/* Routes for invalid url */}
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
