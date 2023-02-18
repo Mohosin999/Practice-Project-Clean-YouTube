@@ -1,14 +1,8 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { useStoreActions } from "easy-peasy";
 import Card from "@mui/material/Card";
 import CardMedia from "@mui/material/CardMedia";
 import CardContent from "@mui/material/CardContent";
-import CardActions from "@mui/material/CardActions";
 import Typography from "@mui/material/Typography";
-import { Button } from "@mui/material";
-import { PlayCircleOutline } from "@mui/icons-material";
-import { Box, Stack } from "@mui/system";
 
 const VideoCardItem = ({ title, thumbnails }) => {
   return (

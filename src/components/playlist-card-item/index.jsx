@@ -128,7 +128,7 @@ const PlaylistCardItem = ({
         )}
         {/* This logic for favoritepage button */}
         {path === "favorites" && (
-          <Stack direction={"row"}>
+          <Stack direction={"row"} sx={{ marginLeft: "auto" }}>
             <DeleteIcon
               titleAccess="Remove from Favorite"
               onClick={() => removeFromFavorite(playlistId)}
