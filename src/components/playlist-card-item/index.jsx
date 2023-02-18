@@ -21,19 +21,20 @@ const PlaylistCardItem = ({
   playlistId,
   path,
 }) => {
-  // const [open, setOpen] = useState(false);
+  // Snackbar/Alert activites
+  const [open, setOpen] = useState(false);
 
-  // const handleClick = () => {
-  //   setOpen(true);
-  // };
+  const handleClick = () => {
+    setOpen(true);
+  };
 
-  // const handleClose = (event, reason) => {
-  //   if (reason === "clickaway") {
-  //     return;
-  //   }
+  const handleClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
 
-  //   setOpen(false);
-  // };
+    setOpen(false);
+  };
 
   // These information from main store
   const { removePlaylist } = useStoreActions((actions) => actions.playlists);
@@ -43,20 +44,11 @@ const PlaylistCardItem = ({
     (actions) => actions.favorites
   );
 
-  // const handleAddToFavorite = () => {
-  //   addToFavorite(playlistId);
-  //   handleClick();
-  // };
-
-  // const handleRemoveFromFavorite = () => {
-  //   removeFromFavorite(playlistId);
-  //   handleClick();
-  // };
-
-  // const handleRemovePlaylist = () => {
-  //   removePlaylist(playlistId);
-  //   handleClick();
-  // };
+  // This function is for favorite button alert
+  const handleAddToFavorite = () => {
+    addToFavorite(playlistId);
+    handleClick();
+  };
 
   return (
     <Card
@@ -110,11 +102,11 @@ const PlaylistCardItem = ({
             {/* Favorite icon */}
             <FavoriteIcon
               titleAccess="Add to Favorite"
-              // onClick={handleAddToFavorite}
-              onClick={() => addToFavorite(playlistId)}
+              onClick={handleAddToFavorite}
+              // onClick={() => addToFavorite(playlistId)}
               sx={{ cursor: "pointer", color: "#EA2027", marginLeft: "0.8rem" }}
             />
-            {/* <Snackbar open={open} autoHideDuration={3000} onClose={handleClose}>
+            <Snackbar open={open} autoHideDuration={3000} onClose={handleClose}>
               <MuiAlert
                 elevation={6}
                 variant="filled"
@@ -124,49 +116,25 @@ const PlaylistCardItem = ({
               >
                 Successfully Added to Favorite!
               </MuiAlert>
-            </Snackbar> */}
+            </Snackbar>
 
             {/* Delete icon */}
             <DeleteIcon
               titleAccess="Delete Playlist"
               onClick={() => removePlaylist(playlistId)}
-              // onClick={handleRemovePlaylist}
               sx={{ cursor: "pointer", color: "#1B9CFC", marginLeft: "0.8rem" }}
             />
-            {/* <Snackbar open={open} autoHideDuration={3000} onClose={handleClose}>
-              <MuiAlert
-                elevation={6}
-                variant="filled"
-                onClose={handleClose}
-                severity="success"
-                sx={{ width: "100%" }}
-              >
-                Action Successful!
-              </MuiAlert>
-            </Snackbar> */}
           </Stack>
         )}
         {/* This logic for favoritepage button */}
         {path === "favorites" && (
-          <>
+          <Stack direction={"row"}>
             <DeleteIcon
               titleAccess="Remove from Favorite"
               onClick={() => removeFromFavorite(playlistId)}
-              // onClick={handleRemoveFromFavorite}
               sx={{ cursor: "pointer", color: "#1B9CFC", marginLeft: "auto" }}
             />
-            {/* <Snackbar open={open} autoHideDuration={3000} onClose={handleClose}>
-              <MuiAlert
-                elevation={6}
-                variant="filled"
-                onClose={handleClose}
-                severity="success"
-                sx={{ width: "100%" }}
-              >
-                Action Successful!
-              </MuiAlert>
-            </Snackbar> */}
-          </>
+          </Stack>
         )}
         {/* This logic for recentpage button */}
         {path === "recents" && null}
