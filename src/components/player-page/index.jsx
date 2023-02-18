@@ -13,7 +13,6 @@ const PlayerPage = () => {
   if (!current) return;
 
   const videoItemArray = current.playlistItems;
-  console.log(videoItemArray);
 
   return (
     <div>
@@ -26,6 +25,7 @@ const PlayerPage = () => {
                   key={index}
                   title={item.title}
                   thumbnails={item.thumbnails}
+                  videoId={item.contentDetails.videoId}
                 />
               </Grid>
             ))}
