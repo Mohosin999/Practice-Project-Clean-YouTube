@@ -1,16 +1,15 @@
 import React, { useState } from "react";
 import { Link as RouterLink } from "react-router-dom";
+import { useMediaQuery } from "@mui/material";
+import { Button } from "@mui/material";
 import Link from "@mui/material/Link";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-import PlaylistForm from "../playlist-form";
-import { Button } from "@mui/material";
 import { Container } from "@mui/system";
 import DrawerComp from "../drawer";
-import { useMediaQuery } from "@mui/material";
-// import AddIcon from "@mui/icons-material/Add";
+import PlaylistForm from "../playlist-form";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);

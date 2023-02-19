@@ -1,7 +1,7 @@
 import React from "react";
 import { useStoreState, useStoreActions } from "easy-peasy";
 import { Container } from "@mui/system";
-import PlaylistCardItem from "../playlist-card-item";
+import PlaylistCardItem from "../../playlist-card-item";
 import { Grid } from "@mui/material";
 
 const Recents = () => {

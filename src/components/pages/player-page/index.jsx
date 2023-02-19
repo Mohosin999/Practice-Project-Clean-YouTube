@@ -3,7 +3,7 @@ import { useStoreState } from "easy-peasy";
 import { Grid, Typography } from "@mui/material";
 import { Container } from "@mui/system";
 import { useParams } from "react-router-dom";
-import VideoCardItem from "../video-card-item";
+import VideoCardItem from "../../video-card-item";
 
 const PlayerPage = () => {
   const { playlistId } = useParams();

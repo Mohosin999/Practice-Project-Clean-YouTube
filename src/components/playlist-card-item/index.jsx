@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import { useStoreActions } from "easy-peasy";
 import Card from "@mui/material/Card";
@@ -9,10 +9,7 @@ import Typography from "@mui/material/Typography";
 import { Button } from "@mui/material";
 import { PlayCircleOutline } from "@mui/icons-material";
 import { Box, Stack } from "@mui/system";
-import DeleteIcon from "@mui/icons-material/Delete";
-import FavoriteIcon from "@mui/icons-material/Favorite";
-import Snackbar from "@mui/material/Snackbar";
-import MuiAlert from "@mui/material/Alert";
+import IconButton from "../icon-button";
 
 const PlaylistCardItem = ({
   playlistThumbnail,
@@ -21,34 +18,7 @@ const PlaylistCardItem = ({
   playlistId,
   path,
 }) => {
-  // Snackbar/Alert activites
-  const [open, setOpen] = useState(false);
-
-  const handleClick = () => {
-    setOpen(true);
-  };
-
-  const handleClose = (event, reason) => {
-    if (reason === "clickaway") {
-      return;
-    }
-
-    setOpen(false);
-  };
-
-  // These information from main store
-  const { removePlaylist } = useStoreActions((actions) => actions.playlists);
-  const { addToFavorite } = useStoreActions((actions) => actions.favorites);
   const { addToRecent } = useStoreActions((actions) => actions.recents);
-  const { removeFromFavorite } = useStoreActions(
-    (actions) => actions.favorites
-  );
-
-  // This function is for favorite button alert
-  const handleAddToFavorite = () => {
-    addToFavorite(playlistId);
-    handleClick();
-  };
 
   return (
     <Card
@@ -95,49 +65,7 @@ const PlaylistCardItem = ({
           </Stack>
         </Button>
 
-        {/* Logic for showing delete & favorite buttons */}
-        {/* This logic for homepage buttons */}
-        {path === "home" && (
-          <Stack direction={"row"} sx={{ marginLeft: "auto" }}>
-            {/* Favorite icon */}
-            <FavoriteIcon
-              titleAccess="Add to Favorite"
-              onClick={handleAddToFavorite}
-              // onClick={() => addToFavorite(playlistId)}
-              sx={{ cursor: "pointer", color: "#EA2027", marginLeft: "0.8rem" }}
-            />
-            <Snackbar open={open} autoHideDuration={3000} onClose={handleClose}>
-              <MuiAlert
-                elevation={6}
-                variant="filled"
-                onClose={handleClose}
-                severity="success"
-                sx={{ width: "100%" }}
-              >
-                Successfully Added to Favorite!
-              </MuiAlert>
-            </Snackbar>
-
-            {/* Delete icon */}
-            <DeleteIcon
-              titleAccess="Delete Playlist"
-              onClick={() => removePlaylist(playlistId)}
-              sx={{ cursor: "pointer", color: "#1B9CFC", marginLeft: "0.8rem" }}
-            />
-          </Stack>
-        )}
-        {/* This logic for favoritepage button */}
-        {path === "favorites" && (
-          <Stack direction={"row"} sx={{ marginLeft: "auto" }}>
-            <DeleteIcon
-              titleAccess="Remove from Favorite"
-              onClick={() => removeFromFavorite(playlistId)}
-              sx={{ cursor: "pointer", color: "#1B9CFC", marginLeft: "auto" }}
-            />
-          </Stack>
-        )}
-        {/* This logic for recentpage button */}
-        {path === "recents" && null}
+        <IconButton id={playlistId} path={path} />
       </CardActions>
     </Card>
   );

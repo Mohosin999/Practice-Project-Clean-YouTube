@@ -7,43 +7,54 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
+import useSnackbar from "../../hooks/useSnackbar";
 
 const PlaylistForm = ({ open, handleClose }) => {
+  const { handleSnackbar, SnackbarComponent } = useSnackbar();
   const [state, setState] = useState("");
+
   const { getPlaylist } = useStoreActions((actions) => actions.playlists);
 
   const handleSubmit = () => {
     if (!state) {
-      alert("Invalid State");
+      handleSnackbar("No Playlist", "success");
     } else {
       getPlaylist(state);
       setState("");
       handleClose();
+      handleSnackbar("Playlist Added Successfully", "success");
     }
   };
 
+  // const handleClick = () => {
+  //   handleSubmit();
+  // };
+
   return (
-    <Dialog open={open} onClose={handleClose}>
-      <DialogTitle>Add Playlist</DialogTitle>
-      <DialogContent>
-        <DialogContentText>
-          To add a playlist, you should input here playlist link or id.
-          Otherwise we can't provide you any playlist.
-        </DialogContentText>
-        <TextField
-          autoFocus
-          margin="dense"
-          label="Playlist Link or ID"
-          fullWidth
-          variant="standard"
-          onChange={(e) => setState(e.target.value)}
-        />
-      </DialogContent>
-      <DialogActions>
-        <Button onClick={handleClose}>Cancel</Button>
-        <Button onClick={handleSubmit}>Add Playlist</Button>
-      </DialogActions>
-    </Dialog>
+    <>
+      <Dialog open={open} onClose={handleClose}>
+        <DialogTitle>Add Playlist</DialogTitle>
+        <DialogContent>
+          <DialogContentText>
+            To add a playlist, you should input here playlist link or id.
+            Otherwise we can't provide you any playlist.
+          </DialogContentText>
+          <TextField
+            autoFocus
+            margin="dense"
+            label="Playlist Link or ID"
+            fullWidth
+            variant="standard"
+            onChange={(e) => setState(e.target.value)}
+          />
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose}>Cancel</Button>
+          <Button onClick={handleSubmit}>Add Playlist</Button>
+        </DialogActions>
+      </Dialog>
+      <SnackbarComponent />
+    </>
   );
 };
 
