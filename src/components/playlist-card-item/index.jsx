@@ -23,7 +23,7 @@ const PlaylistCardItem = ({
   return (
     <Card
       sx={{
-        height: "350px",
+        height: "100%",
         display: "flex",
         flexDirection: "column",
         margin: 1,
@@ -36,16 +36,15 @@ const PlaylistCardItem = ({
         alt={playlistTitle}
         onClick={() => addToRecent(playlistId)}
         sx={{
-          aspectRatio: "16/9",
           width: "100%",
-          maxHeight: "200px",
+          height: "180px",
         }}
       />
       <CardContent>
         <Typography variant="body1" color="text.primary">
           {`${
-            playlistTitle.length > 40
-              ? playlistTitle.substr(0, 40) + "..."
+            playlistTitle.length > 50
+              ? playlistTitle.substr(0, 50) + "..."
               : playlistTitle
           }`}
         </Typography>

@@ -38,7 +38,7 @@ const VideoCardItem = ({ title, thumbnails, videoId }) => {
           display: "flex",
           flexDirection: "column",
           margin: 1,
-          boxShadow: "none",
+          // boxShadow: "none",
         }}
       >
         <CardMedia

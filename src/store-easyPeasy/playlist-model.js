@@ -24,7 +24,6 @@ const playlistModel = persist({
     async ({ addPlaylist, setError, setLoading }, payload, { getState }) => {
       // getState is a function, payload means playlistId
       if (getState().data[payload]) {
-        alert("This Playlist Already Exist");
         return;
       }
       setLoading(true);

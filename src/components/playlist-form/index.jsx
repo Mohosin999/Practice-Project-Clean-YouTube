@@ -10,15 +10,19 @@ import DialogTitle from "@mui/material/DialogTitle";
 import useSnackbar from "../../hooks/useSnackbar";
 
 const PlaylistForm = ({ open, handleClose }) => {
-  const { handleSnackbar, SnackbarComponent } = useSnackbar();
   const [state, setState] = useState("");
+  const [isError, setIsError] = useState(false);
+
+  const { handleSnackbar, SnackbarComponent } = useSnackbar();
 
   const { getPlaylist } = useStoreActions((actions) => actions.playlists);
 
   const handleSubmit = () => {
     if (!state) {
+      setIsError(true);
       handleSnackbar("Invalid Link or ID", "error");
     } else {
+      setIsError(false);
       getPlaylist(state);
       setState("");
       handleClose();
@@ -40,6 +44,7 @@ const PlaylistForm = ({ open, handleClose }) => {
             margin="dense"
             label="Playlist Link or ID"
             fullWidth
+            error={isError}
             variant="standard"
             onChange={(e) => setState(e.target.value)}
           />
