@@ -45,7 +45,7 @@ const IconButton = ({ id, path }) => {
           <DeleteWithConfirm
             title={"Remove from Favorite"}
             confirmTitle={"Remove"}
-            message={"Really you want to remove from favorite?😔"}
+            message={"Do you want to remove this playlist from favorite?😔"}
             onConfirm={() => removeFromFavorite(id)}
           />
         </Stack>

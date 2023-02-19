@@ -1,9 +1,13 @@
 import React from "react";
+import { useStoreState } from "easy-peasy";
 import { Grid } from "@mui/material";
 import { Container } from "@mui/system";
 import PlaylistCardItem from "../../playlist-card-item";
 
-const HomePage = ({ playlistArray }) => {
+const HomePage = () => {
+  const { data } = useStoreState((state) => state.playlists);
+  const playlistArray = Object.values(data);
+
   return (
     <>
       <Container maxWidth={"lg"} sx={{ marginTop: 12 }}>

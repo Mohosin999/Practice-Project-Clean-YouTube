@@ -1,6 +1,5 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { useStoreState } from "easy-peasy";
 import CssBaseline from "@mui/material/CssBaseline";
 import Navbar from "./components/navbar";
 import HomePage from "./components/pages/home-page";
@@ -10,17 +9,13 @@ import Favorites from "./components/pages/favorite-page";
 import Recents from "./components/pages/recent-page";
 
 const App = () => {
-  const { data } = useStoreState((state) => state.playlists);
-
-  const playlistArray = Object.values(data);
-
   return (
     <BrowserRouter>
       <CssBaseline />
       <Navbar />
       <Routes>
         {/* Routes for homepage */}
-        <Route path="/" element={<HomePage playlistArray={playlistArray} />} />
+        <Route path="/" element={<HomePage />} />
 
         {/* * Routes for every single playlist */}
         <Route path="/player/:playlistId" element={<PlayerPage />} />

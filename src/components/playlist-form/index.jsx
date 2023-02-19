@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useStoreActions } from "easy-peasy";
+import { useStoreActions, useStoreState } from "easy-peasy";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import Dialog from "@mui/material/Dialog";
@@ -16,17 +16,41 @@ const PlaylistForm = ({ open, handleClose }) => {
   const { handleSnackbar, SnackbarComponent } = useSnackbar();
 
   const { getPlaylist } = useStoreActions((actions) => actions.playlists);
+  const { data } = useStoreState((state) => state.playlists);
+
+  // const handleSubmit = () => {
+  //   if (!state) {
+  //     setIsError(true);
+  //     handleSnackbar("Invalid Link or ID", "error");
+  //   } else if (data[state]) {
+  //     handleSnackbar("Playlist Already Exist!", "warning");
+  //   } else {
+  //     setIsError(false);
+  //     getPlaylist(state);
+  //     setState("");
+  //     handleClose();
+  //     handleSnackbar("Playlist Added Successfully", "success");
+  //   }
+  // };
 
   const handleSubmit = () => {
     if (!state) {
       setIsError(true);
       handleSnackbar("Invalid Link or ID", "error");
     } else {
-      setIsError(false);
-      getPlaylist(state);
-      setState("");
-      handleClose();
-      handleSnackbar("Playlist Added Successfully", "success");
+      const playlistId = state.match(/(?:list=)([\w-]+)/)?.[1] || state;
+      // the regular expression above matches the playlist ID after "list="
+      // if the link doesn't include "list=", it assumes the input is already a playlist ID
+
+      if (data[playlistId]) {
+        handleSnackbar("Playlist Already Exist!", "warning");
+      } else {
+        setIsError(false);
+        getPlaylist(playlistId);
+        setState("");
+        handleClose();
+        handleSnackbar("Playlist Added Successfully", "success");
+      }
     }
   };
 
