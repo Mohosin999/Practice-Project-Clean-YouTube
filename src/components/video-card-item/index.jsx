@@ -3,35 +3,17 @@ import Card from "@mui/material/Card";
 import CardMedia from "@mui/material/CardMedia";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
-import YouTube from "react-youtube";
+import VideoPlayer from "../video-player";
 
 const VideoCardItem = ({ title, thumbnails, videoId }) => {
-  const [playing, setPlaying] = useState(false);
-  const [pause, setPause] = useState(false);
-  const [end, setEnd] = useState(false);
+  const [isVideoPlaying, setIsVideoPlaying] = useState(false);
 
   const handleClick = () => {
-    setPlaying(true);
-  };
-  // const handlePlayPause = () => {
-  //   setPlaying(!playing);
-  // };
-
-  // const handleClose = () => {
-  //   setPlaying(false);
-  // };
-
-  const opts = {
-    height: "390",
-    width: "640",
-    playerVars: {
-      // https://developers.google.com/youtube/player_parameters
-      autoplay: 1,
-    },
+    setIsVideoPlaying(true);
   };
 
   return (
-    <div onClick={handleClick}>
+    <div>
       <Card
         sx={{
           height: "300",
@@ -40,6 +22,7 @@ const VideoCardItem = ({ title, thumbnails, videoId }) => {
           margin: 1,
           // boxShadow: "none",
         }}
+        onClick={handleClick}
       >
         <CardMedia
           component="img"
@@ -53,26 +36,12 @@ const VideoCardItem = ({ title, thumbnails, videoId }) => {
           </Typography>
         </CardContent>
       </Card>
-      {/* {playing && <YouTube videoId={videoId} onEnd={() => setPlaying(false)} />} */}
-      {playing && (
-        <div>
-          <YouTube
+      {isVideoPlaying && (
+        <div style={{ display: "flex", flexDirection: "row" }}>
+          <VideoPlayer
             videoId={videoId}
-            opts={opts}
-            onPlay={() => setPlaying(true)}
-            onPause={() => setPause(true)}
-            onEnd={() => setEnd(true)}
+            onClose={() => setIsVideoPlaying(false)}
           />
-
-          {/* <div style={{ display: playing ? "none" : "block" }}>
-            <button onClick={handlePlayPause}>Play</button>
-          </div>
-          <div style={{ display: playing ? "block" : "none" }}>
-            <button onClick={handlePlayPause}>Pause</button>
-          </div>
-          <div style={{ display: playing ? "block" : "none" }}>
-            <button onClick={handleClose}>Close</button>
-          </div> */}
         </div>
       )}
     </div>

@@ -7,6 +7,7 @@ import NotFound from "./components/not-found";
 import PlayerPage from "./components/pages/player-page";
 import Favorites from "./components/pages/favorite-page";
 import Recents from "./components/pages/recent-page";
+import VideoPlayer from "./components/video-player";
 
 const App = () => {
   return (
@@ -19,6 +20,7 @@ const App = () => {
 
         {/* * Routes for every single playlist */}
         <Route path="/player/:playlistId" element={<PlayerPage />} />
+        {/* <Route path="/player/:playlistId/:videoId" element={<VideoPlayer />} /> */}
 
         <Route path="/favorites" element={<Favorites />} />
         <Route path="/recents" element={<Recents />} />
