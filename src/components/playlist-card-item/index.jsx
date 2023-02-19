@@ -23,7 +23,7 @@ const PlaylistCardItem = ({
   return (
     <Card
       sx={{
-        height: "350",
+        height: "350px",
         display: "flex",
         flexDirection: "column",
         margin: 1,
