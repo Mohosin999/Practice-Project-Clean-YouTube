@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import { Stack } from "@mui/system";
 import { useStoreActions } from "easy-peasy";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-import DeleteIcon from "@mui/icons-material/Delete";
 import useSnackbar from "../../hooks/useSnackbar";
+import DeleteWithConfirm from "../delete-confirmation";
 
 const IconButton = ({ id, path }) => {
   const { handleSnackbar, SnackbarComponent } = useSnackbar();
@@ -30,20 +30,23 @@ const IconButton = ({ id, path }) => {
           />
           <SnackbarComponent />
 
-          <DeleteIcon
-            titleAccess="Delete Playlist"
-            onClick={() => removePlaylist(id)}
-            sx={{ cursor: "pointer", color: "#1B9CFC", marginLeft: "0.8rem" }}
+          <DeleteWithConfirm
+            title={"Delete Playlist"}
+            confirmTitle={"Delete⚠️"}
+            message={"Are you sure you want to delete this playlist?"}
+            onConfirm={() => removePlaylist(id)}
           />
         </Stack>
       )}
+
       {/* This logic for favoritepage button */}
       {path === "favorites" && (
         <Stack direction={"row"} sx={{ marginLeft: "auto" }}>
-          <DeleteIcon
-            titleAccess="Remove from Favorite"
-            onClick={() => removeFromFavorite(id)}
-            sx={{ cursor: "pointer", color: "#1B9CFC", marginLeft: "auto" }}
+          <DeleteWithConfirm
+            title={"Remove from Favorite"}
+            confirmTitle={"Remove"}
+            message={"Really you want to remove from favorite?😔"}
+            onConfirm={() => removeFromFavorite(id)}
           />
         </Stack>
       )}

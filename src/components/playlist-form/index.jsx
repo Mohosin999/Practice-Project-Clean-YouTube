@@ -17,7 +17,7 @@ const PlaylistForm = ({ open, handleClose }) => {
 
   const handleSubmit = () => {
     if (!state) {
-      handleSnackbar("No Playlist", "success");
+      handleSnackbar("Invalid Link or ID", "error");
     } else {
       getPlaylist(state);
       setState("");
@@ -25,10 +25,6 @@ const PlaylistForm = ({ open, handleClose }) => {
       handleSnackbar("Playlist Added Successfully", "success");
     }
   };
-
-  // const handleClick = () => {
-  //   handleSubmit();
-  // };
 
   return (
     <>

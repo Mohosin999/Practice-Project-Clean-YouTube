@@ -1,15 +1,16 @@
-import * as React from "react";
+import React, { useState } from "react";
 import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
+import DeleteIcon from "@mui/icons-material/Delete";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { useTheme } from "@mui/material/styles";
 
-export default function ResponsiveDialog() {
-  const [open, setOpen] = React.useState(false);
+const DeleteWithConfirm = ({ title, confirmTitle, message, onConfirm }) => {
+  const [open, setOpen] = useState(false);
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down("md"));
 
@@ -21,35 +22,39 @@ export default function ResponsiveDialog() {
     setOpen(false);
   };
 
+  const handleConfirm = () => {
+    onConfirm();
+    handleClose();
+  };
+
   return (
-    <div>
-      <Button variant="outlined" onClick={handleClickOpen}>
-        Open responsive dialog
-      </Button>
+    <>
+      <DeleteIcon
+        titleAccess={title}
+        onClick={handleClickOpen}
+        sx={{ cursor: "pointer", color: "#1B9CFC", marginLeft: "0.8rem" }}
+      />
       <Dialog
         fullScreen={fullScreen}
         open={open}
         onClose={handleClose}
         aria-labelledby="responsive-dialog-title"
       >
-        <DialogTitle id="responsive-dialog-title">
-          {"Use Google's location service?"}
-        </DialogTitle>
+        <DialogTitle id="responsive-dialog-title">{confirmTitle}</DialogTitle>
         <DialogContent>
-          <DialogContentText>
-            Let Google help apps determine location. This means sending
-            anonymous location data to Google, even when no apps are running.
-          </DialogContentText>
+          <DialogContentText>{message}</DialogContentText>
         </DialogContent>
         <DialogActions>
           <Button autoFocus onClick={handleClose}>
-            Disagree
+            Cancel
           </Button>
-          <Button onClick={handleClose} autoFocus>
-            Agree
+          <Button onClick={handleConfirm} autoFocus>
+            Confirm
           </Button>
         </DialogActions>
       </Dialog>
-    </div>
+    </>
   );
-}
+};
+
+export default DeleteWithConfirm;

@@ -35,13 +35,17 @@ const PlaylistCardItem = ({
         image={playlistThumbnail.url}
         alt={playlistTitle}
         onClick={() => addToRecent(playlistId)}
-        sx={{ height: "180px", width: "320px" }}
+        sx={{
+          aspectRatio: "16/9",
+          width: "100%",
+          maxHeight: "200px",
+        }}
       />
       <CardContent>
         <Typography variant="body1" color="text.primary">
           {`${
-            playlistTitle.length > 25
-              ? playlistTitle.substr(0, 25) + "..."
+            playlistTitle.length > 40
+              ? playlistTitle.substr(0, 40) + "..."
               : playlistTitle
           }`}
         </Typography>
