@@ -20,7 +20,7 @@ const App = () => {
 
         {/* * Routes for every single playlist */}
         <Route path="/player/:playlistId" element={<PlayerPage />} />
-        {/* <Route path="/player/:playlistId/:videoId" element={<VideoPlayer />} /> */}
+        <Route path="/player/:playlistId/:index" element={<VideoPlayer />} />
 
         <Route path="/favorites" element={<Favorites />} />
         <Route path="/recents" element={<Recents />} />

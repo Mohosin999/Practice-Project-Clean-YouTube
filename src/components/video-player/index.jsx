@@ -1,7 +1,11 @@
 import React from "react";
 import YouTube from "react-youtube";
+import { useLocation } from "react-router-dom";
 
-const VideoPlayer = ({ videoId, onClose }) => {
+const VideoPlayer = ({ onClose }) => {
+  const location = useLocation();
+  const videoId = new URLSearchParams(location.search).get("videoId");
+
   const opts = {
     height: "480",
     width: "640",
@@ -16,7 +20,7 @@ const VideoPlayer = ({ videoId, onClose }) => {
   };
 
   return (
-    <div>
+    <div style={{ margin: "64px" }}>
       <div onClick={onClose} style={{ color: "red", cursor: "pointer" }}>
         Close
       </div>
