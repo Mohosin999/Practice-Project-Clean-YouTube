@@ -7,12 +7,6 @@ import Typography from "@mui/material/Typography";
 import VideoPlayer from "../video-player";
 
 const VideoCardItem = ({ title, thumbnails, videoId, videos, playlistId }) => {
-  const [isVideoPlaying, setIsVideoPlaying] = useState(false);
-
-  const handleClick = () => {
-    setIsVideoPlaying(true);
-  };
-
   const videoIndex = videos.indexOf(videoId);
 
   return (
@@ -31,7 +25,7 @@ const VideoCardItem = ({ title, thumbnails, videoId, videos, playlistId }) => {
             component="img"
             image={thumbnails.url}
             alt={title}
-            onClick={handleClick}
+            // onClick={handleClick}
             sx={{ height: "180", width: "320" }}
           />
         </Link>
@@ -43,10 +37,7 @@ const VideoCardItem = ({ title, thumbnails, videoId, videos, playlistId }) => {
       </Card>
       {/* {isVideoPlaying && (
         <div style={{ display: "flex", flexDirection: "row" }}>
-          <VideoPlayer
-            videoId={videoId}
-            onClose={() => setIsVideoPlaying(false)}
-          />
+          <VideoPlayer onClose={() => setIsVideoPlaying(false)} />
         </div>
       )} */}
     </div>
