@@ -10,7 +10,7 @@ const HomePage = () => {
 
   return (
     <>
-      <Container maxWidth={"lg"} sx={{ marginTop: 12 }}>
+      <Container maxWidth={"lg"} sx={{ paddingTop: 12 }}>
         {playlistArray.length > 0 && (
           <Grid container alignItems="stretch">
             {playlistArray.map((item) => (

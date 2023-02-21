@@ -1,17 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import {
-  Button,
-  Drawer,
-  IconButton,
-  List,
-  ListItemButton,
-  ListItemIcon,
-  ListItemText,
-} from "@mui/material";
+import { Button, Drawer, IconButton, List } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
-
-const PAGES = ["Recents", "Favorites", "Add Playlist", "Akash"];
 
 const DrawerComp = ({ handleClickOpen }) => {
   const [openDrawer, setOpenDrawer] = useState(false);
@@ -23,7 +13,7 @@ const DrawerComp = ({ handleClickOpen }) => {
         onClose={() => setOpenDrawer(false)}
         anchor={"right"}
       >
-        <List sx={{ backgroundColor: "green", height: "100%" }}>
+        <List sx={{ backgroundColor: "#A77B06", height: "100vh" }}>
           <div style={{ display: "flex", flexDirection: "column" }}>
             <Button
               to="favorites"

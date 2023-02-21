@@ -68,7 +68,9 @@ const PlaylistCardItem = ({
           </Stack>
         </Button>
 
-        <IconButton id={playlistId} path={path} />
+        <div style={{ marginLeft: "auto" }}>
+          <IconButton id={playlistId} path={path} />
+        </div>
       </CardActions>
     </Card>
   );

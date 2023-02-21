@@ -1,10 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import Card from "@mui/material/Card";
 import CardMedia from "@mui/material/CardMedia";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
-import VideoPlayer from "../video-player";
 
 const VideoCardItem = ({ title, thumbnails, videoId, videos, playlistId }) => {
   const videoIndex = videos.indexOf(videoId);
@@ -17,7 +16,6 @@ const VideoCardItem = ({ title, thumbnails, videoId, videos, playlistId }) => {
           display: "flex",
           flexDirection: "column",
           margin: 1,
-          // boxShadow: "none",
         }}
       >
         <Link to={`/player/${playlistId}/${videoIndex}?videoId=${videoId}`}>
@@ -25,7 +23,6 @@ const VideoCardItem = ({ title, thumbnails, videoId, videos, playlistId }) => {
             component="img"
             image={thumbnails.url}
             alt={title}
-            // onClick={handleClick}
             sx={{ height: "180", width: "320" }}
           />
         </Link>
@@ -35,11 +32,6 @@ const VideoCardItem = ({ title, thumbnails, videoId, videos, playlistId }) => {
           </Typography>
         </CardContent>
       </Card>
-      {/* {isVideoPlaying && (
-        <div style={{ display: "flex", flexDirection: "row" }}>
-          <VideoPlayer onClose={() => setIsVideoPlaying(false)} />
-        </div>
-      )} */}
     </div>
   );
 };

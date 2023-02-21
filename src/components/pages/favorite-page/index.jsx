@@ -12,7 +12,7 @@ const Favorites = () => {
 
   return (
     <div>
-      <Container maxWidth={"lg"} sx={{ marginTop: 12 }}>
+      <Container maxWidth={"lg"} sx={{ paddingTop: 12 }}>
         {itemArray.length > 0 && (
           <Grid container alignItems="stretch">
             {itemArray.map((item) => (

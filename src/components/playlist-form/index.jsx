@@ -18,21 +18,6 @@ const PlaylistForm = ({ open, handleClose }) => {
   const { getPlaylist } = useStoreActions((actions) => actions.playlists);
   const { data } = useStoreState((state) => state.playlists);
 
-  // const handleSubmit = () => {
-  //   if (!state) {
-  //     setIsError(true);
-  //     handleSnackbar("Invalid Link or ID", "error");
-  //   } else if (data[state]) {
-  //     handleSnackbar("Playlist Already Exist!", "warning");
-  //   } else {
-  //     setIsError(false);
-  //     getPlaylist(state);
-  //     setState("");
-  //     handleClose();
-  //     handleSnackbar("Playlist Added Successfully", "success");
-  //   }
-  // };
-
   const handleSubmit = () => {
     if (!state) {
       setIsError(true);

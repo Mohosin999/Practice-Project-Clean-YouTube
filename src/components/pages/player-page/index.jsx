@@ -16,7 +16,7 @@ const PlayerPage = () => {
 
   return (
     <div>
-      <Container maxWidth={"lg"} sx={{ marginTop: 12 }}>
+      <Container maxWidth={"lg"} sx={{ paddingTop: 12 }}>
         {videoItemArray.length > 0 && (
           <Grid container alignItems="stretch">
             {videoItemArray.map((item, index) => (

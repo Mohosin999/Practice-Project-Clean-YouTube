@@ -11,24 +11,23 @@ import VideoPlayer from "./components/video-player";
 
 const App = () => {
   return (
-    <BrowserRouter>
-      <CssBaseline />
-      <Navbar />
-      <Routes>
-        {/* Routes for homepage */}
-        <Route path="/" element={<HomePage />} />
+    <div style={{ backgroundColor: "#36454F", height: "100vh" }}>
+      <BrowserRouter>
+        <CssBaseline />
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<HomePage />} />
 
-        {/* * Routes for every single playlist */}
-        <Route path="/player/:playlistId" element={<PlayerPage />} />
-        <Route path="/player/:playlistId/:index" element={<VideoPlayer />} />
+          <Route path="/player/:playlistId" element={<PlayerPage />} />
+          <Route path="/player/:playlistId/:index" element={<VideoPlayer />} />
 
-        <Route path="/favorites" element={<Favorites />} />
-        <Route path="/recents" element={<Recents />} />
+          <Route path="/favorites" element={<Favorites />} />
+          <Route path="/recents" element={<Recents />} />
 
-        {/* Routes for invalid url */}
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-    </BrowserRouter>
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </BrowserRouter>
+    </div>
   );
 };
 
