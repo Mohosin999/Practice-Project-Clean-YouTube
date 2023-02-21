@@ -1,4 +1,5 @@
 import React from "react";
+import { useStoreState } from "easy-peasy";
 import YouTube from "react-youtube";
 import { useLocation } from "react-router-dom";
 import { Container } from "@mui/system";
@@ -8,9 +9,13 @@ import { Button } from "@mui/material";
 import { Link } from "react-router-dom";
 
 const VideoPlayer = () => {
+  const { data } = useStoreState((state) => state.playlists);
+
   const location = useLocation();
   const videoId = new URLSearchParams(location.search).get("videoId");
   const playlistId = location.pathname.split("/")[2];
+  const index = location.pathname.split("/")[3];
+  const lastItem = data[playlistId].playlistItems.length - 1;
 
   const theme = useTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
@@ -50,13 +55,47 @@ const VideoPlayer = () => {
             height: isSmallScreen ? "100%" : "500px",
           }}
         />
-        <Button
-          to={`/player/${playlistId}`}
-          component={Link}
-          variant="outlined"
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "flex-end",
+            marginTop: "0.2rem",
+          }}
         >
-          Close
-        </Button>
+          {/* Previous Video Button */}
+          <Button
+            to={`/player/${playlistId}`}
+            component={Link}
+            variant="contained"
+            color="success"
+            disabled={parseInt(index) === 0}
+          >
+            Previous
+          </Button>
+
+          {/* Close Running Video Button */}
+          <Button
+            to={`/player/${playlistId}`}
+            component={Link}
+            variant="contained"
+            color="error"
+            sx={{ marginLeft: "0.2rem" }}
+          >
+            Close Video
+          </Button>
+
+          {/* Next Video Button */}
+          <Button
+            to={`/player/${playlistId}`}
+            component={Link}
+            variant="contained"
+            color="success"
+            sx={{ marginLeft: "0.2rem" }}
+            disabled={parseInt(index) === lastItem}
+          >
+            Next
+          </Button>
+        </div>
       </div>
     </Container>
   );

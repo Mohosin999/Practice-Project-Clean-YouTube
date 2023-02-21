@@ -12,6 +12,7 @@ const VideoCardItem = ({ title, thumbnails, videoId, videos, playlistId }) => {
     <div>
       <Card
         sx={{
+          backgroundColor: "#efefef",
           height: "300",
           display: "flex",
           flexDirection: "column",

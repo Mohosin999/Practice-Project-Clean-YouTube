@@ -13,7 +13,7 @@ const DrawerComp = ({ handleClickOpen }) => {
         onClose={() => setOpenDrawer(false)}
         anchor={"right"}
       >
-        <List sx={{ backgroundColor: "#A77B06", height: "100vh" }}>
+        <List sx={{ backgroundColor: "#A77B06", height: "100%" }}>
           <div style={{ display: "flex", flexDirection: "column" }}>
             <Button
               to="favorites"

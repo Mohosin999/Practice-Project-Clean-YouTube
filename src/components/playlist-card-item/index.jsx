@@ -23,6 +23,7 @@ const PlaylistCardItem = ({
   return (
     <Card
       sx={{
+        backgroundColor: "#efefef",
         height: "100%",
         display: "flex",
         flexDirection: "column",
@@ -37,7 +38,11 @@ const PlaylistCardItem = ({
         onClick={() => addToRecent(playlistId)}
         sx={{
           width: "100%",
-          height: "180px",
+          height: "0",
+          paddingTop: "56.25%", // Sets the aspect ratio to 16:9 (for a landscape image)
+          objectFit: "cover",
+          objectPosition: "center",
+          maxHeight: "180px",
         }}
       />
       <CardContent>
