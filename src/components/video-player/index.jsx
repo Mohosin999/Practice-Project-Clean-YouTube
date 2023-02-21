@@ -15,11 +15,20 @@ const VideoPlayer = () => {
   const videoId = new URLSearchParams(location.search).get("videoId");
   const playlistId = location.pathname.split("/")[2];
   const index = location.pathname.split("/")[3];
-  const lastItem = data[playlistId].playlistItems.length - 1;
+  const playlistItems = data[playlistId].playlistItems;
+  const lastItem = playlistItems.length - 1;
+
+  // Previous button logic
   const prevIndex = parseInt(index) - 1;
-  const prevVideoId =
-    data[playlistId].playlistItems[prevIndex].contentDetails.videoId;
-  // const videoId = data[playlistId].playlistItems[index].contentDetails.videoId;
+  const prevItem = playlistItems[prevIndex];
+  const prevVideoId = prevItem ? prevItem.contentDetails.videoId : "";
+
+  // Next button logic
+  const nextIndex = parseInt(index) + 1;
+  const nextItem = playlistItems[nextIndex];
+  const nextVideoId = nextItem ? nextItem.contentDetails.videoId : "";
+
+  // Responsive design
   const theme = useTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
 
@@ -35,22 +44,6 @@ const VideoPlayer = () => {
   const onPlayerReady = (event) => {
     event.target.playVideo();
   };
-
-  // const handlePrevious = () => {
-  //   const prevIndex = parseInt(index) - 1;
-  //   const prevVideoId =
-  //     data[playlistId].playlistItems[prevIndex].contentDetails.videoId;
-  //   const prevUrl = `/player/${playlistId}/${prevIndex}?videoId=${prevVideoId}`;
-  //   window.location.href = prevUrl;
-  // };
-
-  // const handleNext = () => {
-  //   const nextIndex = parseInt(index) + 1;
-  //   const nextVideoId =
-  //     data[playlistId].playlistItems[nextIndex].contentDetails.videoId;
-  //   const nextUrl = `/player/${playlistId}/${nextIndex}?videoId=${nextVideoId}`;
-  //   window.location.href = nextUrl;
-  // };
 
   return (
     <Container maxWidth={"md"}>
@@ -87,7 +80,6 @@ const VideoPlayer = () => {
             component={Link}
             variant="contained"
             color="success"
-            // onClick={handlePrevious}
             disabled={parseInt(index) === 0}
           >
             Previous
@@ -106,9 +98,10 @@ const VideoPlayer = () => {
 
           {/* Next Video Button */}
           <Button
+            to={`/player/${playlistId}/${nextIndex}?videoId=${nextVideoId}`}
+            component={Link}
             variant="contained"
             color="success"
-            // onClick={handleNext}
             disabled={parseInt(index) === lastItem}
             sx={{ marginLeft: "0.2rem" }}
           >
