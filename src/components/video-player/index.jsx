@@ -16,7 +16,10 @@ const VideoPlayer = () => {
   const playlistId = location.pathname.split("/")[2];
   const index = location.pathname.split("/")[3];
   const lastItem = data[playlistId].playlistItems.length - 1;
-
+  const prevIndex = parseInt(index) - 1;
+  const prevVideoId =
+    data[playlistId].playlistItems[prevIndex].contentDetails.videoId;
+  // const videoId = data[playlistId].playlistItems[index].contentDetails.videoId;
   const theme = useTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
 
@@ -32,6 +35,22 @@ const VideoPlayer = () => {
   const onPlayerReady = (event) => {
     event.target.playVideo();
   };
+
+  // const handlePrevious = () => {
+  //   const prevIndex = parseInt(index) - 1;
+  //   const prevVideoId =
+  //     data[playlistId].playlistItems[prevIndex].contentDetails.videoId;
+  //   const prevUrl = `/player/${playlistId}/${prevIndex}?videoId=${prevVideoId}`;
+  //   window.location.href = prevUrl;
+  // };
+
+  // const handleNext = () => {
+  //   const nextIndex = parseInt(index) + 1;
+  //   const nextVideoId =
+  //     data[playlistId].playlistItems[nextIndex].contentDetails.videoId;
+  //   const nextUrl = `/player/${playlistId}/${nextIndex}?videoId=${nextVideoId}`;
+  //   window.location.href = nextUrl;
+  // };
 
   return (
     <Container maxWidth={"md"}>
@@ -64,10 +83,11 @@ const VideoPlayer = () => {
         >
           {/* Previous Video Button */}
           <Button
-            to={`/player/${playlistId}`}
+            to={`/player/${playlistId}/${prevIndex}?videoId=${prevVideoId}`}
             component={Link}
             variant="contained"
             color="success"
+            // onClick={handlePrevious}
             disabled={parseInt(index) === 0}
           >
             Previous
@@ -86,12 +106,11 @@ const VideoPlayer = () => {
 
           {/* Next Video Button */}
           <Button
-            to={`/player/${playlistId}`}
-            component={Link}
             variant="contained"
             color="success"
-            sx={{ marginLeft: "0.2rem" }}
+            // onClick={handleNext}
             disabled={parseInt(index) === lastItem}
+            sx={{ marginLeft: "0.2rem" }}
           >
             Next
           </Button>
