@@ -1,7 +1,7 @@
 import axios from "axios";
 
-// API key
-const key = "AIzaSyDeUInKZjS7G2QJfaAHLLcU0SIT8ffi19A";
+// Access the API key from the .env file
+const key = process.env.YOUTUBE_API_KEY;
 
 const getPlaylist = async (playlistId, pageToken = "", result = []) => {
   // If we pass pageToken as an empty string, it'll still load the first page
