@@ -11,6 +11,7 @@ const getPlaylist = async (playlistId, pageToken = "", result = []) => {
   // Update the result with new items
   result = [...result, ...data.items];
 
+  // If next page token exist, then this function will call again
   if (data.nextPageToken) {
     result = await getPlaylist(playlistId, data.nextPageToken, result);
   }
