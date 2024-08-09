@@ -9,7 +9,6 @@ const usePlaylists = () => {
   });
 
   const getPlaylistById = async (playlistId, force = false) => {
-    // যদি এই playlistId টা state.playlists এর ভেতরে থাকে তবে আমরা আর নিচে যেতে দিবোনা
     if (state.playlists[playlistId] && !force) {
       return;
     }
@@ -17,13 +16,14 @@ const usePlaylists = () => {
     let result = await getPlaylist(playlistId);
 
     /**
-     * cid = channelId, ct = channelTitle
-     * এইগুলো সব জায়গায় একই থাকবে, তাই আলাদাভাবে কাজ করলাম
+     * Let's define a channelId and channelTitle
+     * They will be same everywhere, so defined separately
      */
     let cid, ct;
 
-    // আমরা রেজাল্টে যেভাবে চাচ্ছি সেরকমভাবে সাজালাম
+    // Let's customize the result like us
     result = result.map((item) => {
+      // Destructuring the snippet object
       const {
         channelId,
         title,
@@ -32,10 +32,7 @@ const usePlaylists = () => {
         channelTitle,
       } = item.snippet;
 
-      /**
-       * cid = channelId, ct = channelTitle
-       * এইগুলো সব জায়গায় একই থাকবে, তাই আলাদাভাবে কাজ করলাম
-       */
+      // These (cid, ct) will be same everywhere, so worked separately
       if (!cid) {
         cid = channelId;
       }
@@ -44,7 +41,7 @@ const usePlaylists = () => {
         ct = channelTitle;
       }
 
-      // এইগুলো সব জায়গায় পরিবর্তন হবে, তাই রির্টান করলাম
+      // These will change everywhere, so returned
       return {
         title,
         description,
