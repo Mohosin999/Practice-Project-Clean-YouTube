@@ -8,6 +8,12 @@ const usePlaylists = () => {
     favorite: [],
   });
 
+  /**
+   *
+   * @param {string} playlistId - It will be a string
+   * @param {boolean} force - It will be boolean
+   * @returns
+   */
   const getPlaylistById = async (playlistId, force = false) => {
     if (state.playlists[playlistId] && !force) {
       return;
@@ -50,8 +56,7 @@ const usePlaylists = () => {
       };
     });
 
-    // result এর মধ্যে কিন্তু cid এবং ct থাকছে না, তাই আমরা state এর ভেতর playlists এ তা
-    // রাখব
+    // Put cid and ct inside the state
     setState((prev) => ({
       ...prev,
       playlists: {
@@ -68,7 +73,7 @@ const usePlaylists = () => {
 
   /**
    * Add to recentPlaylists
-   * @param {string} playlistId - you must give playlistId as a string
+   * @param {string} playlistId - You must give playlistId as a string
    */
   const addToRecent = (playlistId) => {
     setState((prev) => ({
@@ -79,7 +84,7 @@ const usePlaylists = () => {
 
   /**
    * Add to favorite
-   * @param {string} playlistId - you must give playlistId as a string
+   * @param {string} playlistId - You must give playlistId as a string
    */
   const addToFavorite = (playlistId) => {
     setState((prev) => ({
@@ -88,6 +93,10 @@ const usePlaylists = () => {
     }));
   };
 
+  /**
+   * Get all playlists by their ids
+   * @param {Array} ids - It will be an array of ids
+   */
   const getPlaylistsByIds = (ids = []) => {
     return ids.map((id) => state.playlists[id]);
   };
