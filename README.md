@@ -59,7 +59,15 @@ Go to your project directory that your already created.
 cd your-repo
 ```
 
-### 3. `Install Dependencies:`
+### 3. `Create .env File:`
+
+Create a **.env** file in the root directory and add the below key -
+
+```
+VITE_YOUTUBE_API_KEY=<your api key from google developer console>
+```
+
+### 4. `Install Dependencies:`
 
 Install all dependencies by typing this in your terminal.
 
@@ -67,12 +75,16 @@ Install all dependencies by typing this in your terminal.
 yarn
 ```
 
-### 4. `Start the Server:`
+### 5. `Start the Server:`
 
 ```
 yarn dev
 ```
 
-### 5. `Access the Application:`
+### 6. `Access the Application:`
 
 Open your browser and visit.
+
+```
+http://localhost:5173/
+```
