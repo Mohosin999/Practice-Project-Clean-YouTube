@@ -14,29 +14,32 @@ CleanTube is a revolutionary project designed to provide users with a seamless a
 ## 🔆 Features
 
 **`Playlist Integration:`**
+
 - Users can effortlessly copy and paste YouTube playlist or video links into the project, instantly displaying the content within the interface. This streamlined process ensures a user-friendly experience.
 
 **`Add and Remove Playlists:`**
+
 - Users have the ability to add new playlists to their project for easy access.
 - Additionally, they can remove playlists they no longer wish to keep, maintaining control over their content library.
 
 **`Add and Remove from Favorites::`**
+
 - User can add their most-loved playlists in favorites.
 - Also, they can remove it from favorites.
 
 **`Recent History:`**
-- The project keeps track of users' recent activities, displaying a history of playlists and videos accessed. This feature ensures that users can easily revisit content they've interacted with recently.
 
+- The project keeps track of users' recent activities, displaying a history of playlists and videos accessed. This feature ensures that users can easily revisit content they've interacted with recently.
 
 ## 💻 Technology Stack
 
 - React
-- Material UI
-- EasyPeasy
-- Axios
 - React Router DOM
 - React Youtube
-
+- Material UI
+- EasyPeasy (For state management)
+- Axios
+- PropTypes
 
 ## 🚀 Setup and Installation
 
