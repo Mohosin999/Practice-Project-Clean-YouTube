@@ -75,6 +75,12 @@ Install all dependencies by typing this in your terminal.
 yarn
 ```
 
+If **yarn** not worked, try it -
+
+```
+yarn install
+```
+
 ### 5. `Start the Server:`
 
 ```
