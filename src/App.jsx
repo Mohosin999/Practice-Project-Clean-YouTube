@@ -1,16 +1,19 @@
-import { useEffect } from "react";
-import usePlaylists from "./hooks/usePlaylists";
+import React from "react";
 
 const App = () => {
-  const { getPlaylistById, playlists } = usePlaylists();
-
-  useEffect(() => {
-    getPlaylistById("PLchGjvsPxgIUoUprh4wo_KfdDuc4BV1Z4");
-  }, []);
-
-  console.log("Playlist", playlists);
-
-  return <div>App</div>;
+  return (
+    <div>
+      <h1>Param</h1>
+      <p>
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Assumenda
+        autem et iusto, fugiat consequuntur facere, obcaecati, pariatur
+        repudiandae sequi aliquid corrupti velit itaque est sunt hic esse
+        quisquam. Labore exercitationem harum eius dolore. Assumenda deserunt
+        quia architecto, officia quisquam provident vero debitis similique cum,
+        molestias placeat quibusdam natus, quis nesciunt.
+      </p>
+    </div>
+  );
 };
 
 export default App;
