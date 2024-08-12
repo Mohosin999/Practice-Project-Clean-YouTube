@@ -1,6 +1,11 @@
 import React from "react";
 
 const App = () => {
+  let id = 0;
+  const increment = () => {
+    return id++;
+  };
+
   return (
     <div>
       <h1>Param</h1>
@@ -12,6 +17,7 @@ const App = () => {
         quia architecto, officia quisquam provident vero debitis similique cum,
         molestias placeat quibusdam natus, quis nesciunt.
       </p>
+      <button onClick={increment}>Add</button>
     </div>
   );
 };
