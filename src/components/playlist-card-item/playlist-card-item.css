@@ -1,0 +1,35 @@
+/* playlist-card-item.css */
+.card-container {
+  display: flex;
+  flex-direction: column;
+  background-color: #efefef;
+  height: 100%;
+  margin: 1rem;
+}
+
+.thumbnail-wrapper {
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.thumbnail {
+  width: 100%;
+  height: auto;
+  max-height: 300px; /* Adjust this based on your design */
+  object-fit: cover;
+}
+
+.card-content {
+  padding: 1rem;
+}
+
+.card-actions {
+  margin-top: auto;
+  padding: 0 1rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

@@ -1,14 +1,99 @@
+// import React from "react";
+// import { Link } from "react-router-dom";
+// import { useStoreActions } from "easy-peasy";
+// import Card from "@mui/material/Card";
+// import CardMedia from "@mui/material/CardMedia";
+// import CardContent from "@mui/material/CardContent";
+// import CardActions from "@mui/material/CardActions";
+// import Typography from "@mui/material/Typography";
+// import { Button } from "@mui/material";
+// import { PlayCircleOutline } from "@mui/icons-material";
+// import { Box, Stack } from "@mui/system";
+// import IconButton from "../icon-button";
+
+// const PlaylistCardItem = ({
+//   playlistThumbnail,
+//   playlistTitle,
+//   channelTitle,
+//   playlistId,
+//   path,
+// }) => {
+//   const { addToRecent } = useStoreActions((actions) => actions.recents);
+
+//   return (
+//     <Card
+//       sx={{
+//         backgroundColor: "#efefef",
+//         height: "100%",
+//         display: "flex",
+//         flexDirection: "column",
+//         margin: 1,
+//       }}
+//     >
+//       <CardMedia
+//         to={`/player/${playlistId}`}
+//         component={Link}
+//         image={playlistThumbnail.url}
+//         alt={playlistTitle}
+//         onClick={() => addToRecent(playlistId)}
+//         sx={{
+//           width: "100%",
+//           height: "0",
+//           paddingTop: "56.25%", // Sets the aspect ratio to 16:9 (for a landscape image)
+//           objectFit: "cover",
+//           objectPosition: "center",
+//           maxHeight: "180px",
+//         }}
+//       />
+
+//       <CardContent>
+//         <Typography variant="body1" color="text.primary">
+//           {`${
+//             playlistTitle.length > 50
+//               ? playlistTitle.substr(0, 50) + "..."
+//               : playlistTitle
+//           }`}
+//         </Typography>
+//         <Typography variant="body2" color="text.secondary">
+//           {channelTitle}
+//         </Typography>
+//       </CardContent>
+
+//       <Box sx={{ flexGrow: 1 }}></Box>
+//       <CardActions disableSpacing>
+//         <Button
+//           to={`/player/${playlistId}`}
+//           component={Link}
+//           onClick={() => addToRecent(playlistId)}
+//         >
+//           <Stack direction={"row"} spacing={1} alignItems={"center"}>
+//             <PlayCircleOutline />
+//             <Typography variant="body2" fontWeight={600}>
+//               View Playlist
+//             </Typography>
+//           </Stack>
+//         </Button>
+
+//         <div style={{ marginLeft: "auto" }}>
+//           <IconButton id={playlistId} path={path} />
+//         </div>
+//       </CardActions>
+//     </Card>
+//   );
+// };
+
+// export default PlaylistCardItem;
+
 import React from "react";
 import { Link } from "react-router-dom";
 import { useStoreActions } from "easy-peasy";
-import Card from "@mui/material/Card";
-import CardMedia from "@mui/material/CardMedia";
+import "./playlist-card-item.css"; // Import the CSS file
 import CardContent from "@mui/material/CardContent";
 import CardActions from "@mui/material/CardActions";
 import Typography from "@mui/material/Typography";
 import { Button } from "@mui/material";
 import { PlayCircleOutline } from "@mui/icons-material";
-import { Box, Stack } from "@mui/system";
+import Stack from "@mui/material/Stack";
 import IconButton from "../icon-button";
 
 const PlaylistCardItem = ({
@@ -21,45 +106,32 @@ const PlaylistCardItem = ({
   const { addToRecent } = useStoreActions((actions) => actions.recents);
 
   return (
-    <Card
-      sx={{
-        backgroundColor: "#efefef",
-        height: "100%",
-        display: "flex",
-        flexDirection: "column",
-        margin: 1,
-      }}
-    >
-      <CardMedia
-        to={`/player/${playlistId}`}
-        component={Link}
-        image={playlistThumbnail.url}
-        alt={playlistTitle}
-        onClick={() => addToRecent(playlistId)}
-        sx={{
-          width: "100%",
-          height: "0",
-          paddingTop: "56.25%", // Sets the aspect ratio to 16:9 (for a landscape image)
-          objectFit: "cover",
-          objectPosition: "center",
-          maxHeight: "180px",
-        }}
-      />
-      <CardContent>
+    <div className="card-container">
+      <div className="thumbnail-wrapper">
+        <Link
+          to={`/player/${playlistId}`}
+          onClick={() => addToRecent(playlistId)}
+        >
+          <img
+            src={playlistThumbnail.url}
+            alt={playlistTitle}
+            className="thumbnail"
+          />
+        </Link>
+      </div>
+
+      <CardContent className="card-content">
         <Typography variant="body1" color="text.primary">
-          {`${
-            playlistTitle.length > 50
-              ? playlistTitle.substr(0, 50) + "..."
-              : playlistTitle
-          }`}
+          {playlistTitle.length > 50
+            ? playlistTitle.substr(0, 50) + "..."
+            : playlistTitle}
         </Typography>
         <Typography variant="body2" color="text.secondary">
           {channelTitle}
         </Typography>
       </CardContent>
 
-      <Box sx={{ flexGrow: 1 }}></Box>
-      <CardActions disableSpacing>
+      <CardActions className="card-actions">
         <Button
           to={`/player/${playlistId}`}
           component={Link}
@@ -73,11 +145,9 @@ const PlaylistCardItem = ({
           </Stack>
         </Button>
 
-        <div style={{ marginLeft: "auto" }}>
-          <IconButton id={playlistId} path={path} />
-        </div>
+        <IconButton id={playlistId} path={path} />
       </CardActions>
-    </Card>
+    </div>
   );
 };
 
