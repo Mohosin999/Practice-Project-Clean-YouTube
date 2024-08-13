@@ -13,7 +13,7 @@ const App = () => {
   return (
     <div
       style={{
-        backgroundColor: "#92a68a",
+        // backgroundColor: "#92a68a",
         height: "100%",
         paddingBottom: "75rem",
       }}

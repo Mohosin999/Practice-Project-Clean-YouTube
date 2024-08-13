@@ -25,7 +25,7 @@ const Navbar = () => {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="fixed" sx={{ backgroundColor: "#444" }}>
+      <AppBar position="fixed">
         <Container>
           <Toolbar>
             {isSmallScreen ? (

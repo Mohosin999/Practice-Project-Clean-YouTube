@@ -2,7 +2,7 @@ import React from "react";
 import { useStoreState, useStoreActions } from "easy-peasy";
 import { Container } from "@mui/system";
 import PlaylistCardItem from "../../playlist-card-item";
-import { Grid } from "@mui/material";
+import { Box, Grid, Typography } from "@mui/material";
 
 const Recents = () => {
   const { data } = useStoreState((state) => state.playlists);
@@ -13,7 +13,7 @@ const Recents = () => {
   return (
     <div>
       <Container maxWidth={"lg"} sx={{ paddingTop: 12 }}>
-        {itemArray.length > 0 && (
+        {itemArray.length > 0 ? (
           <Grid container alignItems="stretch">
             {itemArray.map((item) => (
               <Grid item xs={12} sm={6} md={4} lg={3} mb={2}>
@@ -28,6 +28,25 @@ const Recents = () => {
               </Grid>
             ))}
           </Grid>
+        ) : (
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              justifyContent: "center",
+              minHeight: "50vh",
+              textAlign: "center",
+              color: "text.secondary",
+            }}
+          >
+            <Typography variant="h4" gutterBottom>
+              📄 Empty Recent Page
+            </Typography>
+            <Typography variant="body1">
+              You should visit a palylist at first
+            </Typography>
+          </Box>
         )}
       </Container>
     </div>
