@@ -6,6 +6,10 @@ import MenuIcon from "@mui/icons-material/Menu";
 const DrawerComp = ({ handleClickOpen }) => {
   const [openDrawer, setOpenDrawer] = useState(false);
 
+  const handleButtonClick = () => {
+    setOpenDrawer(false);
+  };
+
   return (
     <>
       <Drawer
@@ -19,6 +23,7 @@ const DrawerComp = ({ handleClickOpen }) => {
               to="favorites"
               component={Link}
               sx={{ color: "#efefef", margin: "1rem" }}
+              onClick={handleButtonClick}
             >
               Favorites
             </Button>
@@ -26,11 +31,15 @@ const DrawerComp = ({ handleClickOpen }) => {
               to="recents"
               component={Link}
               sx={{ color: "#efefef", margin: "1rem" }}
+              onClick={handleButtonClick}
             >
               Recents
             </Button>
             <Button
-              onClick={handleClickOpen}
+              onClick={() => {
+                handleClickOpen();
+                handleButtonClick();
+              }}
               sx={{ color: "#efefef", margin: "1rem" }}
             >
               Add Playlist
