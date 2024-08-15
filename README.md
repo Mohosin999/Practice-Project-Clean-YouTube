@@ -1,3 +1,5 @@
-# Clean YouTube Application
+# Redux Toolkit Crash Course
 
-loading...
+install
+
+- npm i @reduxjs/toolkit react-redux
