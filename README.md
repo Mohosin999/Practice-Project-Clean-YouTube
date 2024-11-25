@@ -1,10 +1,3 @@
-<<<<<<< HEAD
-# Redux Toolkit Crash Course
-
-install
-
-- npm i @reduxjs/toolkit react-redux
-=======
 # Clean Youtube Project
 
 ## 📚 Table of Contents
@@ -101,4 +94,3 @@ Open your browser and visit.
 ```
 http://localhost:5173/
 ```
->>>>>>> ff5b1a827190a545f5053f82564ea013734132f7
