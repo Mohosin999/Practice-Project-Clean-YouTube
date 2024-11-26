@@ -23,6 +23,9 @@ const HomePage = () => {
     indexOfLastItem
   );
 
+  console.log("playlistArray -> ", playlistArray);
+  console.log("currentPlaylists -> ", currentPlaylists);
+
   // Handle page change
   const handlePageChange = (event, value) => {
     setCurrentPage(value);
@@ -46,7 +49,8 @@ const HomePage = () => {
                 >
                   <PlaylistCardItem
                     playlistId={item.playlistId}
-                    playlistThumbnail={item.playlistThumbnail}
+                    playlistThumbnail={item.playlistItems[0].thumbnails}
+                    // playlistThumbnail={item.playlistThumbnail}
                     playlistTitle={item.playlistTitle}
                     channelTitle={item.channelTitle}
                     path={"home"}

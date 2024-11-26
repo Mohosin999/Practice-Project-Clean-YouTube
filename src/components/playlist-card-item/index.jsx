@@ -20,6 +20,8 @@ const PlaylistCardItem = ({
 }) => {
   const { addToRecent } = useStoreActions((actions) => actions.recents);
 
+  console.log("thumbnail -> ", playlistThumbnail);
+
   return (
     <Card
       sx={{
@@ -37,12 +39,9 @@ const PlaylistCardItem = ({
         alt={playlistTitle}
         onClick={() => addToRecent(playlistId)}
         sx={{
-          width: "100%",
-          height: "0",
-          paddingTop: "56.25%", // Sets the aspect ratio to 16:9 (for a landscape image)
+          paddingTop: "56.25%",
           objectFit: "cover",
           objectPosition: "center",
-          maxHeight: "180px",
         }}
       />
 
