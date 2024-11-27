@@ -1,6 +1,6 @@
 // import React, { useState } from "react";
 // import { useStoreState } from "easy-peasy";
-// import { Grid, Pagination } from "@mui/material";
+// import { Grid, Pagination, TextField } from "@mui/material";
 // import { Container } from "@mui/system";
 // import PlaylistCardItem from "../../playlist-card-item";
 
@@ -8,17 +8,21 @@
 //   const { data } = useStoreState((state) => state.playlists);
 //   const playlistArray = Object.values(data);
 
-//   // Pagination state
+//   // State for search query and pagination
+//   const [searchQuery, setSearchQuery] = useState("");
 //   const [currentPage, setCurrentPage] = useState(1);
-//   const itemsPerPage = 4;
+//   const itemsPerPage = 2;
 
-//   // Calculate the number of pages
-//   const totalPages = Math.ceil(playlistArray.length / itemsPerPage);
+//   // Filter playlists based on the search query
+//   const filteredPlaylists = playlistArray.filter((playlist) =>
+//     playlist.playlistTitle.toLowerCase().includes(searchQuery.toLowerCase())
+//   );
 
-//   // Calculate the index of the first item on the current page
+//   // Calculate pagination
+//   const totalPages = Math.ceil(filteredPlaylists.length / itemsPerPage);
 //   const indexOfLastItem = currentPage * itemsPerPage;
 //   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-//   const currentPlaylists = playlistArray.slice(
+//   const currentPlaylists = filteredPlaylists.slice(
 //     indexOfFirstItem,
 //     indexOfLastItem
 //   );
@@ -28,13 +32,35 @@
 //     setCurrentPage(value);
 //   };
 
+//   // Handle search query change
+//   const handleSearchChange = (event) => {
+//     setSearchQuery(event.target.value);
+//     setCurrentPage(1); // Reset to the first page after filtering
+//   };
+
 //   return (
-//     <>
-//       <Container maxWidth={"lg"} sx={{ paddingTop: 12 }}>
-//         {playlistArray.length > 0 && (
-//           <>
-//             <Grid container alignItems="stretch">
-//               {currentPlaylists.map((item) => (
+//     <Container maxWidth={"lg"} sx={{ paddingTop: 12 }}>
+//       {playlistArray.length > 0 && (
+//         <>
+//           {/* Search Bar */}
+//           <TextField
+//             placeholder="Search Playlists"
+//             variant="outlined"
+//             size="small"
+//             value={searchQuery}
+//             onChange={handleSearchChange}
+//             sx={{
+//               marginBottom: 3,
+//               width: "100%",
+//               backgroundColor: "#fff",
+//               borderRadius: "4px",
+//             }}
+//           />
+
+//           {/* Playlist Grid */}
+//           <Grid container alignItems="stretch">
+//             {currentPlaylists.length > 0 ? (
+//               currentPlaylists.map((item) => (
 //                 <Grid
 //                   item
 //                   xs={12}
@@ -47,35 +73,40 @@
 //                   <PlaylistCardItem
 //                     playlistId={item.playlistId}
 //                     playlistThumbnail={item.playlistItems[0].thumbnails}
-//                     // playlistThumbnail={item.playlistThumbnail}
 //                     playlistTitle={item.playlistTitle}
 //                     channelTitle={item.channelTitle}
 //                     path={"home"}
 //                   />
 //                 </Grid>
-//               ))}
-//             </Grid>
-//             {totalPages > 1 && (
-//               <div style={{ display: "flex", justifyContent: "end" }}>
-//                 <Pagination
-//                   count={totalPages}
-//                   page={currentPage}
-//                   onChange={handlePageChange}
-//                   color={"primary"}
-//                   sx={{ marginTop: 2 }}
-//                 />
-//               </div>
+//               ))
+//             ) : (
+//               <Grid item xs={12}>
+//                 <p>No playlists found</p>
+//               </Grid>
 //             )}
-//           </>
-//         )}
-//       </Container>
-//     </>
+//           </Grid>
+
+//           {/* Pagination */}
+//           {totalPages > 1 && (
+//             <div style={{ display: "flex", justifyContent: "end" }}>
+//               <Pagination
+//                 count={totalPages}
+//                 page={currentPage}
+//                 onChange={handlePageChange}
+//                 color={"primary"}
+//                 sx={{ marginTop: 2 }}
+//               />
+//             </div>
+//           )}
+//         </>
+//       )}
+//     </Container>
 //   );
 // };
 
 // export default HomePage;
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useStoreState } from "easy-peasy";
 import { Grid, Pagination, TextField } from "@mui/material";
 import { Container } from "@mui/system";
@@ -115,9 +146,16 @@ const HomePage = () => {
     setCurrentPage(1); // Reset to the first page after filtering
   };
 
+  // Adjust pagination when playlists are deleted
+  useEffect(() => {
+    if (currentPlaylists.length === 0 && currentPage > 1) {
+      setCurrentPage((prevPage) => Math.max(prevPage - 1, 1));
+    }
+  }, [currentPlaylists, currentPage]);
+
   return (
     <Container maxWidth={"lg"} sx={{ paddingTop: 12 }}>
-      {playlistArray.length > 0 && (
+      {playlistArray.length > 0 ? (
         <>
           {/* Search Bar */}
           <TextField
@@ -135,21 +173,13 @@ const HomePage = () => {
           />
 
           {/* Playlist Grid */}
-          <Grid container alignItems="stretch">
+          <Grid container alignItems="stretch" spacing={2}>
             {currentPlaylists.length > 0 ? (
               currentPlaylists.map((item) => (
-                <Grid
-                  item
-                  xs={12}
-                  sm={6}
-                  md={4}
-                  lg={3}
-                  mb={2}
-                  key={item.playlistId}
-                >
+                <Grid item xs={12} sm={6} md={4} lg={3} key={item.playlistId}>
                   <PlaylistCardItem
                     playlistId={item.playlistId}
-                    playlistThumbnail={item.playlistItems[0].thumbnails}
+                    playlistThumbnail={item.playlistItems[0]?.thumbnails}
                     playlistTitle={item.playlistTitle}
                     channelTitle={item.channelTitle}
                     path={"home"}
@@ -176,6 +206,10 @@ const HomePage = () => {
             </div>
           )}
         </>
+      ) : (
+        <p style={{ textAlign: "center", marginTop: 50 }}>
+          No playlists available!
+        </p>
       )}
     </Container>
   );

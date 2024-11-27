@@ -20,8 +20,6 @@ const PlaylistCardItem = ({
 }) => {
   const { addToRecent } = useStoreActions((actions) => actions.recents);
 
-  console.log("thumbnail -> ", playlistThumbnail);
-
   return (
     <Card
       sx={{
