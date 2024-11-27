@@ -20,7 +20,7 @@ const Favorites = () => {
                 <PlaylistCardItem
                   key={item.playlistId}
                   playlistId={item.playlistId}
-                  playlistThumbnail={item.playlistThumbnail}
+                  playlistThumbnail={item.playlistItems[0]?.thumbnails}
                   playlistTitle={item.playlistTitle}
                   channelTitle={item.channelTitle}
                   path={"favorites"}

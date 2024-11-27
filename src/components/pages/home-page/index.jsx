@@ -119,7 +119,7 @@ const HomePage = () => {
   // State for search query and pagination
   const [searchQuery, setSearchQuery] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 2;
+  const itemsPerPage = 10;
 
   // Filter playlists based on the search query
   const filteredPlaylists = playlistArray.filter((playlist) =>
