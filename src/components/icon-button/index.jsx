@@ -1,9 +1,10 @@
 import React from "react";
 import { Stack } from "@mui/system";
 import { useStoreActions } from "easy-peasy";
-import FavoriteIcon from "@mui/icons-material/Favorite";
+// import FavoriteIcon from "@mui/icons-material/Favorite";
 import useSnackbar from "../../hooks/useSnackbar";
 import DeleteWithConfirm from "../delete-confirmation";
+import { Favorite } from "@mui/icons-material";
 
 const IconButton = ({ id, path }) => {
   const { handleSnackbar, SnackbarComponent } = useSnackbar();
@@ -23,10 +24,10 @@ const IconButton = ({ id, path }) => {
     <div>
       {path === "home" && (
         <Stack direction={"row"} sx={{ marginLeft: "auto" }}>
-          <FavoriteIcon
+          <Favorite
             titleAccess="Add to Favorite"
             onClick={handleClick}
-            sx={{ cursor: "pointer", color: "#EA2027", marginLeft: "0.8rem" }}
+            sx={{ cursor: "pointer", marginLeft: "0.8rem" }}
           />
           <SnackbarComponent />
 

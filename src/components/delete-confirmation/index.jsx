@@ -5,7 +5,7 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
-import DeleteIcon from "@mui/icons-material/Delete";
+import { Delete } from "@mui/icons-material";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { useTheme } from "@mui/material/styles";
 
@@ -29,10 +29,11 @@ const DeleteWithConfirm = ({ title, confirmTitle, message, onConfirm }) => {
 
   return (
     <>
-      <DeleteIcon
+      <Delete
         titleAccess={title}
         onClick={handleClickOpen}
-        sx={{ cursor: "pointer", color: "#1B9CFC", marginLeft: "0.8rem" }}
+        sx={{ cursor: "pointer", color: "#FF0000", marginLeft: "0.8rem" }}
+        // sx={{ cursor: "pointer", color: "#1B9CFC", marginLeft: "0.8rem" }}
       />
       <Dialog
         fullScreen={fullScreen}

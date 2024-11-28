@@ -103,7 +103,7 @@ const PlayerPage = () => {
                 xs={12}
                 sm={6}
                 md={4}
-                lg={3}
+                lg={4}
                 key={item.contentDetails.videoId}
               >
                 <VideoCardItem
