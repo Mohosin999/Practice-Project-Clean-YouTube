@@ -176,7 +176,7 @@ const HomePage = () => {
           <Grid container alignItems="stretch" spacing={2}>
             {currentPlaylists.length > 0 ? (
               currentPlaylists.map((item) => (
-                <Grid item xs={12} sm={6} md={4} lg={3} key={item.playlistId}>
+                <Grid item xs={12} sm={6} md={4} lg={4} key={item.playlistId}>
                   <PlaylistCardItem
                     playlistId={item.playlistId}
                     playlistThumbnail={item.playlistItems[0]?.thumbnails}

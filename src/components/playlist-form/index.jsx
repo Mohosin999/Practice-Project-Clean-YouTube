@@ -13,31 +13,46 @@
 //   const [state, setState] = useState("");
 //   const [isError, setIsError] = useState(false);
 
-//   console.log("state", state);
-
 //   const { handleSnackbar, SnackbarComponent } = useSnackbar();
 
 //   const { getPlaylist } = useStoreActions((actions) => actions.playlists);
 //   const { data } = useStoreState((state) => state.playlists);
 
-//   const handleSubmit = () => {
+//   const handleSubmit = async () => {
 //     if (!state) {
 //       setIsError(true);
 //       handleSnackbar("Invalid Link or ID", "error");
-//     } else {
-//       const playlistId = state.match(/(?:list=)([\w-]+)/)?.[1] || state;
-//       // the regular expression above matches the playlist ID after "list="
-//       // if the link doesn't include "list=", it assumes the input is already a playlist ID
+//       return;
+//     }
 
-//       if (data[playlistId]) {
-//         handleSnackbar("Playlist Already Exist!", "warning");
-//       } else {
-//         setIsError(false);
-//         getPlaylist(playlistId);
-//         setState("");
-//         handleClose();
-//         handleSnackbar("Playlist Added Successfully", "success");
-//       }
+//     /**
+//      * This is extracting the playlist ID from a given YouTube playlist URL
+//      * - /(?:list=)([\w-]+)/)?.[1]
+//      */
+//     const playlistId = state.match(/(?:list=)([\w-]+)/)?.[1] || state;
+
+//     if (data[playlistId]) {
+//       handleSnackbar("Playlist Already Exists!", "warning");
+//       return;
+//     }
+
+//     try {
+//       setIsError(false);
+
+//       // Attempt to fetch the playlist
+//       await getPlaylist(playlistId);
+
+//       // Success handling
+//       handleSnackbar("Playlist Added Successfully", "success");
+//       setState("");
+//       handleClose();
+//     } catch (error) {
+//       // Error handling
+//       console.error("Error fetching playlist:", error);
+//       handleSnackbar(
+//         "Failed to add playlist. Please check the ID or link.",
+//         "error"
+//       );
 //     }
 //   };
 
@@ -47,8 +62,8 @@
 //         <DialogTitle>Add Playlist</DialogTitle>
 //         <DialogContent>
 //           <DialogContentText>
-//             To add a playlist, you should input here playlist link or id.
-//             Otherwise we can't provide you any playlist.
+//             To add a playlist, please input the playlist link or ID. Otherwise,
+//             we cannot fetch the playlist.
 //           </DialogContentText>
 //           <TextField
 //             autoFocus
@@ -58,6 +73,7 @@
 //             error={isError}
 //             variant="standard"
 //             onChange={(e) => setState(e.target.value)}
+//             value={state}
 //           />
 //         </DialogContent>
 //         <DialogActions>
@@ -99,6 +115,10 @@ const PlaylistForm = ({ open, handleClose }) => {
       return;
     }
 
+    /**
+     * This is extracting the playlist ID from a given YouTube playlist URL
+     * - /(?:list=)([\w-]+)/)?.[1]
+     */
     const playlistId = state.match(/(?:list=)([\w-]+)/)?.[1] || state;
 
     if (data[playlistId]) {
