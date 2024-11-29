@@ -87,7 +87,7 @@ import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import { Button, Stack } from "@mui/material";
 import { PlayCircleOutline } from "@mui/icons-material";
-import IconButton from "../icon-button";
+import IconButton from "../shared/icon-button";
 
 const PlaylistCardItem = ({
   playlistThumbnail,

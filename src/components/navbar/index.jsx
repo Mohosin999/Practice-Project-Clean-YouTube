@@ -8,7 +8,7 @@ import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import { Container } from "@mui/system";
-import DrawerComp from "../drawer";
+import DrawerComp from "../../components/shared/drawer";
 import PlaylistForm from "../playlist-form";
 
 const Navbar = () => {
