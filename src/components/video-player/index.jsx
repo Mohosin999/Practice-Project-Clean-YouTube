@@ -128,6 +128,7 @@ import {
 } from "@mui/material";
 import { Link } from "react-router-dom";
 import { ArrowBack, ArrowForward, Close } from "@mui/icons-material";
+import CustomIconButton from "../shared/custom-icon-button";
 
 const VideoPlayer = () => {
   const { data } = useStoreState((state) => state.playlists);
@@ -167,7 +168,7 @@ const VideoPlayer = () => {
   };
 
   return (
-    <Container maxWidth="lg" sx={{ mt: 12, mb: 5 }}>
+    <Container maxWidth="lg" sx={{ mt: isSmallScreen ? 10 : 12, mb: 5 }}>
       <Box
         sx={{
           position: "relative",
@@ -198,64 +199,37 @@ const VideoPlayer = () => {
           display: "flex",
           justifyContent: "flex-end",
           alignItems: "center",
-          mt: 3,
-          flexDirection: "row", // Always in a row
-          gap: 2, // Consistent spacing between buttons
+          mt: isSmallScreen ? 2 : 3,
+          flexDirection: "row",
+          gap: isSmallScreen ? 1 : 2,
           width: "100%",
         }}
       >
         {/* Previous Button */}
-        <IconButton
+        <CustomIconButton
           to={`/player/${playlistId}/${prevIndex}?videoId=${prevVideoId}`}
-          component={Link}
           disabled={parseInt(index) === 0}
-          size={isSmallScreen ? "small" : "medium"} // Smaller buttons on small screens
-          sx={{
-            backgroundColor: "gold", // Gold background color
-            color: "black", // Black icon color for better contrast
-            "&:hover": { backgroundColor: "#ffc107" }, // Darker gold on hover
-            "&:disabled": { backgroundColor: "grey.400", color: "grey.600" }, // Grayed-out for disabled state
-            width: isSmallScreen ? "36px" : "48px", // Adjust button size for small screens
-            height: isSmallScreen ? "36px" : "48px", // Maintain circular shape
-          }}
-        >
-          <ArrowBack fontSize={isSmallScreen ? "small" : "medium"} />{" "}
-          {/* Icon size adjusts */}
-        </IconButton>
+          icon={ArrowBack}
+          isSmallScreen={isSmallScreen}
+          title="Previous Video"
+        />
 
         {/* Close Video Button */}
-        <IconButton
+        <CustomIconButton
           to={`/player/${playlistId}`}
-          component={Link}
-          size={isSmallScreen ? "small" : "medium"}
-          sx={{
-            backgroundColor: "gold",
-            color: "black",
-            "&:hover": { backgroundColor: "#ffc107" },
-            width: isSmallScreen ? "36px" : "48px",
-            height: isSmallScreen ? "36px" : "48px",
-          }}
-        >
-          <Close fontSize={isSmallScreen ? "small" : "medium"} />
-        </IconButton>
+          icon={Close}
+          isSmallScreen={isSmallScreen}
+          title="Close Video"
+        />
 
         {/* Next Button */}
-        <IconButton
+        <CustomIconButton
           to={`/player/${playlistId}/${nextIndex}?videoId=${nextVideoId}`}
-          component={Link}
           disabled={parseInt(index) === lastItem}
-          size={isSmallScreen ? "small" : "medium"}
-          sx={{
-            backgroundColor: "gold",
-            color: "black",
-            "&:hover": { backgroundColor: "#ffc107" },
-            "&:disabled": { backgroundColor: "grey.400", color: "grey.600" },
-            width: isSmallScreen ? "36px" : "48px",
-            height: isSmallScreen ? "36px" : "48px",
-          }}
-        >
-          <ArrowForward fontSize={isSmallScreen ? "small" : "medium"} />
-        </IconButton>
+          icon={ArrowForward}
+          isSmallScreen={isSmallScreen}
+          title="Next Video"
+        />
       </Box>
     </Container>
   );

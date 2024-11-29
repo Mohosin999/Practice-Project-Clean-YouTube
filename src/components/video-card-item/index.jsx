@@ -85,7 +85,7 @@ const VideoCardItem = ({ title, thumbnails, videoId, videos, playlistId }) => {
           <CardContent sx={{ display: "flex" }}>
             <PlayCircleOutline sx={{ marginRight: "0.3rem" }} />
             <Typography variant="body1" color="text.primary">
-              {`${title.length > 70 ? title.substr(0, 70) + "..." : title}`}
+              {`${title.length > 40 ? title.substr(0, 40) + "..." : title}`}
             </Typography>
           </CardContent>
         </Link>
