@@ -1,4 +1,4 @@
-// import React, { useState } from "react";
+// import React, { useState, useEffect } from "react";
 // import { useStoreState } from "easy-peasy";
 // import { Grid, Pagination, TextField } from "@mui/material";
 // import { Container } from "@mui/system";
@@ -11,7 +11,7 @@
 //   // State for search query and pagination
 //   const [searchQuery, setSearchQuery] = useState("");
 //   const [currentPage, setCurrentPage] = useState(1);
-//   const itemsPerPage = 2;
+//   const itemsPerPage = 10;
 
 //   // Filter playlists based on the search query
 //   const filteredPlaylists = playlistArray.filter((playlist) =>
@@ -38,9 +38,16 @@
 //     setCurrentPage(1); // Reset to the first page after filtering
 //   };
 
+//   // Adjust pagination when playlists are deleted
+//   useEffect(() => {
+//     if (currentPlaylists.length === 0 && currentPage > 1) {
+//       setCurrentPage((prevPage) => Math.max(prevPage - 1, 1));
+//     }
+//   }, [currentPlaylists, currentPage]);
+
 //   return (
 //     <Container maxWidth={"lg"} sx={{ paddingTop: 12 }}>
-//       {playlistArray.length > 0 && (
+//       {playlistArray.length > 0 ? (
 //         <>
 //           {/* Search Bar */}
 //           <TextField
@@ -58,21 +65,13 @@
 //           />
 
 //           {/* Playlist Grid */}
-//           <Grid container alignItems="stretch">
+//           <Grid container alignItems="stretch" spacing={2}>
 //             {currentPlaylists.length > 0 ? (
 //               currentPlaylists.map((item) => (
-//                 <Grid
-//                   item
-//                   xs={12}
-//                   sm={6}
-//                   md={4}
-//                   lg={3}
-//                   mb={2}
-//                   key={item.playlistId}
-//                 >
+//                 <Grid item xs={12} sm={6} md={4} lg={3} key={item.playlistId}>
 //                   <PlaylistCardItem
 //                     playlistId={item.playlistId}
-//                     playlistThumbnail={item.playlistItems[0].thumbnails}
+//                     playlistThumbnail={item.playlistItems[0]?.thumbnails}
 //                     playlistTitle={item.playlistTitle}
 //                     channelTitle={item.channelTitle}
 //                     path={"home"}
@@ -99,6 +98,10 @@
 //             </div>
 //           )}
 //         </>
+//       ) : (
+//         <p style={{ textAlign: "center", marginTop: 50 }}>
+//           No playlists available!
+//         </p>
 //       )}
 //     </Container>
 //   );
@@ -106,11 +109,13 @@
 
 // export default HomePage;
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Suspense, lazy } from "react";
 import { useStoreState } from "easy-peasy";
 import { Grid, Pagination, TextField } from "@mui/material";
 import { Container } from "@mui/system";
-import PlaylistCardItem from "../../playlist-card-item";
+
+// Lazy load PlaylistCardItem component
+const PlaylistCardItem = lazy(() => import("../../playlist-card-item"));
 
 const HomePage = () => {
   const { data } = useStoreState((state) => state.playlists);
@@ -177,13 +182,15 @@ const HomePage = () => {
             {currentPlaylists.length > 0 ? (
               currentPlaylists.map((item) => (
                 <Grid item xs={12} sm={6} md={4} lg={3} key={item.playlistId}>
-                  <PlaylistCardItem
-                    playlistId={item.playlistId}
-                    playlistThumbnail={item.playlistItems[0]?.thumbnails}
-                    playlistTitle={item.playlistTitle}
-                    channelTitle={item.channelTitle}
-                    path={"home"}
-                  />
+                  <Suspense fallback={<div>Loading...</div>}>
+                    <PlaylistCardItem
+                      playlistId={item.playlistId}
+                      playlistThumbnail={item.playlistItems[0]?.thumbnails}
+                      playlistTitle={item.playlistTitle}
+                      channelTitle={item.channelTitle}
+                      path={"home"}
+                    />
+                  </Suspense>
                 </Grid>
               ))
             ) : (
