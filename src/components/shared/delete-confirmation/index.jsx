@@ -11,6 +11,8 @@ import { useTheme } from "@mui/material/styles";
 
 const DeleteWithConfirm = ({ title, confirmTitle, message, onConfirm }) => {
   const [open, setOpen] = useState(false);
+
+  // Responsive Design
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down("sm"));
 

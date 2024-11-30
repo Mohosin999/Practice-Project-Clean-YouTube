@@ -16,9 +16,16 @@ const Favorites = () => {
         {itemArray.length > 0 ? (
           <Grid container alignItems="stretch">
             {itemArray.map((item) => (
-              <Grid item xs={12} sm={6} md={4} lg={3} mb={2}>
+              <Grid
+                item
+                xs={12}
+                sm={6}
+                md={4}
+                lg={3}
+                mb={2}
+                key={item.playlistId}
+              >
                 <PlaylistCardItem
-                  key={item.playlistId}
                   playlistId={item.playlistId}
                   playlistThumbnail={item.playlistItems[0]?.thumbnails}
                   playlistTitle={item.playlistTitle}

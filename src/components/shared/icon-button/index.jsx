@@ -22,13 +22,9 @@ const IconButton = ({ id, path, isFavorite }) => {
    */
   const handleFavoriteActions = () => {
     if (isFavorite) {
-      // Remove from favorites
       removeFromFavorite(id);
-      handleSnackbar("Successfully Removed from Favorite", "success"); // Success message on removal
     } else {
-      // Add to favorites
       addToFavorite(id);
-      handleSnackbar("Successfully Added to Favorite", "success");
     }
   };
 
@@ -38,7 +34,7 @@ const IconButton = ({ id, path, isFavorite }) => {
    *
    * @param {string} id - This is a playlist id.
    */
-  const handleRemovePlaylist = (id) => {
+  const handleDeletePlaylist = (id) => {
     removePlaylist(id);
     removeFromFavorite(id);
     removeFromRecent(id);
@@ -56,19 +52,17 @@ const IconButton = ({ id, path, isFavorite }) => {
             sx={{
               cursor: "pointer",
               marginLeft: "0.8rem",
-              color: "gray",
-              fill: isFavorite ? "gray" : "none", // Conditional fill color
-              stroke: "black", // Optional: outline stroke color
+              color: "gold",
+              fill: isFavorite ? "gold" : "none", // Conditional fill color
+              stroke: "gold", // Optional: outline stroke color
             }}
           />
-
-          <SnackbarComponent />
 
           <DeleteWithConfirm
             title={"Delete Playlist"}
             confirmTitle={"Delete⚠️"}
             message={"Are you sure you want to delete this playlist?"}
-            onConfirm={() => handleRemovePlaylist(id)}
+            onConfirm={() => handleDeletePlaylist(id)}
           />
         </Stack>
       )}
@@ -76,14 +70,22 @@ const IconButton = ({ id, path, isFavorite }) => {
       {/* This logic for favoritepage button */}
       {path === "favorites" && (
         <Stack direction={"row"} sx={{ marginLeft: "auto" }}>
-          <DeleteWithConfirm
-            title={"Remove from Favorite"}
-            confirmTitle={"Remove"}
-            message={"Do you want to remove this playlist from favorite?😔"}
-            onConfirm={() => removeFromFavorite(id)}
+          <Favorite
+            titleAccess={
+              isFavorite ? "Remove from Favorite" : "Add to Favorite"
+            }
+            onClick={handleFavoriteActions}
+            sx={{
+              cursor: "pointer",
+              marginLeft: "0.8rem",
+              color: "gold",
+              fill: isFavorite ? "gold" : "none",
+              stroke: "gold",
+            }}
           />
         </Stack>
       )}
+
       {/* This logic for recentpage button */}
       {path === "recents" && null}
     </div>
