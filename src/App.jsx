@@ -12,7 +12,7 @@ import Footer from "./components/footer";
 
 const App = () => {
   return (
-    <div>
+    <div style={{ background: "#181A1B" }}>
       <BrowserRouter>
         <CssBaseline />
         <Navbar />

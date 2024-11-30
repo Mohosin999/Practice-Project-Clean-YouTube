@@ -1,7 +1,11 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import { Button, Drawer, IconButton, List } from "@mui/material";
+import { List, Drawer, IconButton } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
+import { Link } from "react-router-dom";
+import CustomButton from "../custom-button";
+
+// Icons for the buttons
+import { Favorite, AllOut, Add } from "@mui/icons-material";
 
 const DrawerComp = ({ handleClickOpen }) => {
   const [openDrawer, setOpenDrawer] = useState(false);
@@ -17,36 +21,44 @@ const DrawerComp = ({ handleClickOpen }) => {
         onClose={() => setOpenDrawer(false)}
         anchor={"right"}
       >
-        <List sx={{ backgroundColor: "#A77B06", height: "100%" }}>
-          <div style={{ display: "flex", flexDirection: "column" }}>
-            <Button
-              to="favorites"
-              component={Link}
-              sx={{ color: "#efefef", margin: "1rem" }}
+        <List
+          sx={{
+            background: "linear-gradient(90deg, #141E30, #243B55)",
+            height: "100%",
+          }}
+        >
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              gap: 14,
+              margin: "16px 24px 0 0",
+            }}
+          >
+            <CustomButton
+              to="/favorites"
+              icon={Favorite}
+              text="Favorites"
               onClick={handleButtonClick}
-            >
-              Favorites
-            </Button>
-            <Button
-              to="recents"
-              component={Link}
-              sx={{ color: "#efefef", margin: "1rem" }}
+            />
+            <CustomButton
+              to="/recents"
+              icon={AllOut}
+              text="Recents"
               onClick={handleButtonClick}
-            >
-              Recents
-            </Button>
-            <Button
+            />
+            <CustomButton
               onClick={() => {
                 handleClickOpen();
                 handleButtonClick();
               }}
-              sx={{ color: "#efefef", margin: "1rem" }}
-            >
-              Add Playlist
-            </Button>
+              icon={Add}
+              text="Add Playlist"
+            />
           </div>
         </List>
       </Drawer>
+
       <IconButton onClick={() => setOpenDrawer(!openDrawer)}>
         <MenuIcon sx={{ color: "#efefef" }} />
       </IconButton>
