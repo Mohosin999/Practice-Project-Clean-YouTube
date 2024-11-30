@@ -123,7 +123,7 @@ const PlayerPage = () => {
 
   return (
     <div>
-      <Container maxWidth="lg" sx={{ paddingTop: 12 }}>
+      <Container maxWidth="lg" sx={{ paddingTop: 12, minHeight: "100vh" }}>
         {/* Search Bar */}
         <TextField
           placeholder="Search Videos"
