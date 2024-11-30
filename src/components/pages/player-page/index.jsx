@@ -86,7 +86,7 @@
 
 import React, { useState, Suspense, lazy } from "react";
 import { useStoreState } from "easy-peasy";
-import { Grid, TextField } from "@mui/material";
+import { Grid, TextField, useMediaQuery, useTheme } from "@mui/material";
 import { Container } from "@mui/system";
 import { useParams } from "react-router-dom";
 
@@ -100,10 +100,17 @@ const PlayerPage = () => {
   const { data } = useStoreState((state) => state.playlists);
   const current = data[playlistId];
 
+  // Responsive Design
+  const theme = useTheme();
+  const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
+
   // Return a message or fallback if the playlist is not found
   if (!current) {
     return (
-      <Container maxWidth="lg" sx={{ paddingTop: 12, textAlign: "center" }}>
+      <Container
+        maxWidth="lg"
+        sx={{ paddingTop: isSmallScreen ? 10 : 12, textAlign: "center" }}
+      >
         <h2>Playlist not found!</h2>
       </Container>
     );
@@ -123,10 +130,13 @@ const PlayerPage = () => {
 
   return (
     <div>
-      <Container maxWidth="lg" sx={{ paddingTop: 12, minHeight: "100vh" }}>
+      <Container
+        maxWidth="lg"
+        sx={{ paddingTop: isSmallScreen ? 10 : 12, minHeight: "100vh" }}
+      >
         {/* Search Bar */}
         <TextField
-          placeholder="Search Videos"
+          placeholder="Search Playlists"
           variant="outlined"
           size="small"
           value={searchQuery}
@@ -134,8 +144,30 @@ const PlayerPage = () => {
           sx={{
             marginBottom: 3,
             width: "100%",
-            backgroundColor: "#fff",
+            backgroundColor: "#333", // Darker background
             borderRadius: "4px",
+            "& .MuiOutlinedInput-root": {
+              color: "#fff", // Text color for dark mode
+              borderRadius: "4px",
+              "& fieldset": {
+                borderColor: "#555", // Border color
+              },
+              "&:hover fieldset": {
+                borderColor: "#777", // Lighter border on hover
+              },
+              "&.Mui-focused fieldset": {
+                borderColor: "#1e88e5", // Focus color
+              },
+            },
+            "& .MuiInputBase-input": {
+              color: "#fff", // Text color
+            },
+            "& .MuiInputLabel-root": {
+              color: "#aaa", // Placeholder color
+            },
+            "& .MuiInputLabel-root.Mui-focused": {
+              color: "#1e88e5", // Placeholder focus color
+            },
           }}
         />
 

@@ -54,14 +54,18 @@ const PlaylistCardItem = ({
       />
 
       <CardContent sx={{ paddingBottom: "0px !important" }}>
-        <Typography variant="body1" color="text.primary">
+        <Typography variant="body1" color="text.primary" sx={{ color: "#fff" }}>
           {`${
             playlistTitle.length > 50
               ? playlistTitle.substr(0, 50) + "..."
               : playlistTitle
           }`}
         </Typography>
-        <Typography variant="body2" color="text.secondary">
+        <Typography
+          variant="body2"
+          color="text.secondary"
+          sx={{ color: "#B4B2B0" }}
+        >
           {channelTitle}
         </Typography>
 
@@ -70,9 +74,19 @@ const PlaylistCardItem = ({
             to={`/player/${playlistId}`}
             component={Link}
             onClick={() => addToRecent(playlistId)}
-            sx={{ padding: "6px 0px" }}
+            sx={{
+              padding: "6px 0",
+              "&:hover": {
+                backgroundColor: "transparent", // Remove background change on hover
+                color: "inherit", // Ensure text color remains the same
+              },
+            }}
           >
-            <Typography variant="body2" fontWeight={500}>
+            <Typography
+              variant="body2"
+              fontWeight={500}
+              sx={{ color: "#B4B2B0" }}
+            >
               View Playlist
             </Typography>
           </Button>

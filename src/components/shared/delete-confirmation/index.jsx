@@ -34,7 +34,7 @@ const DeleteWithConfirm = ({ title, confirmTitle, message, onConfirm }) => {
       <Delete
         titleAccess={title}
         onClick={handleClickOpen}
-        sx={{ cursor: "pointer", color: "#FF0000", marginLeft: "0.8rem" }}
+        sx={{ cursor: "pointer", color: "#fff", marginLeft: "0.8rem" }}
         // sx={{ cursor: "pointer", color: "#1B9CFC", marginLeft: "0.8rem" }}
       />
       <Dialog

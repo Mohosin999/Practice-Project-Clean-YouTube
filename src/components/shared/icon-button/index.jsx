@@ -52,9 +52,9 @@ const IconButton = ({ id, path, isFavorite }) => {
             sx={{
               cursor: "pointer",
               marginLeft: "0.8rem",
-              color: "gold",
-              fill: isFavorite ? "gold" : "none", // Conditional fill color
-              stroke: "gold", // Optional: outline stroke color
+              color: "#fff",
+              fill: isFavorite ? "#fff" : "none", // Conditional fill color
+              stroke: "#fff", // Optional: outline stroke color
             }}
           />
 
@@ -78,9 +78,9 @@ const IconButton = ({ id, path, isFavorite }) => {
             sx={{
               cursor: "pointer",
               marginLeft: "0.8rem",
-              color: "gold",
-              fill: isFavorite ? "gold" : "none",
-              stroke: "gold",
+              color: "#fff",
+              fill: isFavorite ? "#fff" : "none",
+              stroke: "#fff",
             }}
           />
         </Stack>
