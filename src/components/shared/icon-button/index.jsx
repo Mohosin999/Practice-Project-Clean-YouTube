@@ -12,9 +12,15 @@ const IconButton = ({ id, path, isFavorite }) => {
   const { addToFavorite, removeFromFavorite } = useStoreActions(
     (actions) => actions.favorites
   );
+  const { removeFromRecent } = useStoreActions((actions) => actions.recents);
   const { removePlaylist } = useStoreActions((actions) => actions.playlists);
 
-  const handleClick = () => {
+  /**
+   * Function to handle favorite related actions.
+   * Add a playlist to favorite or
+   * Remove a playlist from favorite
+   */
+  const handleFavoriteActions = () => {
     if (isFavorite) {
       // Remove from favorites
       removeFromFavorite(id);
@@ -26,6 +32,18 @@ const IconButton = ({ id, path, isFavorite }) => {
     }
   };
 
+  /**
+   * Function to remove playlist.
+   * Also remove playlist from favorite and recent.
+   *
+   * @param {string} id - This is a playlist id.
+   */
+  const handleRemovePlaylist = (id) => {
+    removePlaylist(id);
+    removeFromFavorite(id);
+    removeFromRecent(id);
+  };
+
   return (
     <div>
       {path === "home" && (
@@ -34,7 +52,7 @@ const IconButton = ({ id, path, isFavorite }) => {
             titleAccess={
               isFavorite ? "Remove from Favorite" : "Add to Favorite"
             }
-            onClick={handleClick}
+            onClick={handleFavoriteActions}
             sx={{
               cursor: "pointer",
               marginLeft: "0.8rem",
@@ -50,7 +68,7 @@ const IconButton = ({ id, path, isFavorite }) => {
             title={"Delete Playlist"}
             confirmTitle={"Delete⚠️"}
             message={"Are you sure you want to delete this playlist?"}
-            onConfirm={() => removePlaylist(id)}
+            onConfirm={() => handleRemovePlaylist(id)}
           />
         </Stack>
       )}

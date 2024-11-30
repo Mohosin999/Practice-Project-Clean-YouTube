@@ -10,6 +10,10 @@ const recentModel = persist({
     state.items.unshift(payload);
     state.items = state.items.slice(0, 5);
   }),
+
+  removeFromRecent: action((state, payload) => {
+    state.items = state.items.filter((pId) => payload !== pId);
+  }),
 });
 
 export default recentModel;
