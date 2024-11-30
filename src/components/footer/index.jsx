@@ -1,184 +1,3 @@
-// import React from "react";
-// import {
-//   Box,
-//   Typography,
-//   IconButton,
-//   useTheme,
-//   useMediaQuery,
-// } from "@mui/material";
-// import { Home, Twitter, LinkedIn, GitHub, Email } from "@mui/icons-material";
-
-// const Footer = () => {
-//   const theme = useTheme();
-//   const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
-
-//   return (
-//     <Box
-//       sx={{
-//         backgroundColor: "#333",
-//         color: "#fff",
-//         padding: 3,
-//         paddingX: 6,
-//         marginTop: 4,
-//         textAlign: "center",
-//         display: "flex",
-//         flexDirection: isSmallScreen ? "column" : "row",
-//         justifyContent: "space-between",
-//         alignItems: "center",
-//         gap: isSmallScreen ? 2 : 0,
-//       }}
-//     >
-//       {/* Copyright Section */}
-//       <Typography
-//         variant="body2"
-//         sx={{
-//           fontSize: isSmallScreen ? "0.8rem" : "1rem",
-//         }}
-//       >
-//         © {new Date().getFullYear()} Clean YouTube
-//       </Typography>
-
-//       {/* Social Media Links */}
-//       <Box
-//         sx={{
-//           display: "flex",
-//           justifyContent: "center",
-//           alignItems: "center",
-//           gap: 2,
-//         }}
-//       >
-//         <IconButton
-//           href="https://twitter.com"
-//           target="_blank"
-//           rel="noopener noreferrer"
-//           sx={{ color: "#1DA1F2" }}
-//         >
-//           <Twitter />
-//         </IconButton>
-//         <IconButton
-//           href="https://linkedin.com"
-//           target="_blank"
-//           rel="noopener noreferrer"
-//           sx={{ color: "#0A66C2" }}
-//         >
-//           <LinkedIn />
-//         </IconButton>
-//         <IconButton
-//           href="https://github.com"
-//           target="_blank"
-//           rel="noopener noreferrer"
-//           sx={{ color: "#fff" }}
-//         >
-//           <GitHub />
-//         </IconButton>
-//         <IconButton
-//           href="mohosin.hasan.akash@gmail.com"
-//           sx={{ color: "#EA4335" }}
-//         >
-//           <Email />
-//         </IconButton>
-//       </Box>
-//     </Box>
-//   );
-// };
-
-// export default Footer;
-
-// import React from "react";
-// import {
-//   Box,
-//   Typography,
-//   IconButton,
-//   useTheme,
-//   useMediaQuery,
-// } from "@mui/material";
-// import { Twitter, LinkedIn, GitHub, Email } from "@mui/icons-material";
-
-// const Footer = () => {
-//   const theme = useTheme();
-//   const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
-
-//   const handleCopyEmail = () => {
-//     const email = "mohosin.hasan.akash@gmail.com";
-//     navigator.clipboard
-//       .writeText(email)
-//       .then(() => {
-//         alert("Email copied to clipboard!");
-//       })
-//       .catch((err) => {
-//         console.error("Failed to copy email:", err);
-//       });
-//   };
-
-//   return (
-//     <Box
-//       sx={{
-//         backgroundColor: "#333",
-//         color: "#fff",
-//         padding: 3,
-//         paddingX: 6,
-//         marginTop: 4,
-//         textAlign: "center",
-//         display: "flex",
-//         flexDirection: isSmallScreen ? "column" : "row",
-//         justifyContent: "space-between",
-//         alignItems: "center",
-//         gap: isSmallScreen ? 2 : 0,
-//       }}
-//     >
-//       {/* Copyright Section */}
-//       <Typography
-//         variant="body2"
-//         sx={{
-//           fontSize: isSmallScreen ? "0.8rem" : "1rem",
-//         }}
-//       >
-//         © {new Date().getFullYear()} Clean YouTube
-//       </Typography>
-
-//       {/* Social Media Links */}
-//       <Box
-//         sx={{
-//           display: "flex",
-//           justifyContent: "center",
-//           alignItems: "center",
-//           gap: 2,
-//         }}
-//       >
-//         <IconButton
-//           href="https://twitter.com"
-//           target="_blank"
-//           rel="noopener noreferrer"
-//           sx={{ color: "#1DA1F2" }}
-//         >
-//           <Twitter />
-//         </IconButton>
-//         <IconButton
-//           href="https://linkedin.com"
-//           target="_blank"
-//           rel="noopener noreferrer"
-//           sx={{ color: "#0A66C2" }}
-//         >
-//           <LinkedIn />
-//         </IconButton>
-//         <IconButton
-//           href="https://github.com"
-//           target="_blank"
-//           rel="noopener noreferrer"
-//           sx={{ color: "#fff" }}
-//         >
-//           <GitHub />
-//         </IconButton>
-//         <IconButton onClick={handleCopyEmail} sx={{ color: "#EA4335" }}>
-//           <Email />
-//         </IconButton>
-//       </Box>
-//     </Box>
-//   );
-// };
-
-// export default Footer;
-
 import React, { useState } from "react";
 import {
   Box,
@@ -193,7 +12,7 @@ import { Twitter, LinkedIn, GitHub, Facebook } from "@mui/icons-material";
 const Footer = () => {
   const [isCopied, setIsCopied] = useState(false);
   const theme = useTheme();
-  const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
+  const isMediumScreen = useMediaQuery(theme.breakpoints.down("md"));
   const email = "mohosin.hasan.akash@gmail.com";
 
   const handleCopyEmail = () => {
@@ -214,21 +33,21 @@ const Footer = () => {
         background: "linear-gradient(90deg, #141E30, #243B55)",
         color: "#fff",
         padding: 3,
-        paddingX: isSmallScreen ? 0 : 6,
+        paddingX: isMediumScreen ? 0 : 6,
         marginTop: 4,
         textAlign: "center",
         display: "flex",
-        flexDirection: isSmallScreen ? "column" : "row",
+        flexDirection: isMediumScreen ? "column" : "row",
         justifyContent: "space-between",
         alignItems: "center",
-        gap: isSmallScreen ? 2 : 0,
+        gap: isMediumScreen ? 2 : 0,
       }}
     >
       {/* Left Section */}
       <Typography
         variant="body2"
         sx={{
-          fontSize: isSmallScreen ? "0.8rem" : "1rem",
+          fontSize: isMediumScreen ? "0.8rem" : "1rem",
         }}
       >
         © {new Date().getFullYear()} Clean YouTube
@@ -256,11 +75,11 @@ const Footer = () => {
         <Box
           sx={{
             display: "flex",
-            flexDirection: isSmallScreen ? "column" : "row",
+            flexDirection: isMediumScreen ? "column" : "row",
             alignItems: "center",
             gap: 1,
             border: "1px solid #fff",
-            padding: "12px",
+            padding: "12px 24px",
             borderRadius: "8px",
             background: "rgba(255, 255, 255, 0.1)",
           }}

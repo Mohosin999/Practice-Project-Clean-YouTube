@@ -123,8 +123,13 @@ const HomePage = () => {
           }}
         >
           {/* Top Section: Title */}
-          <Typography variant="h4" gutterBottom>
-            <HourglassEmpty fontSize="medium" /> No Playlist Available Yet
+          <Typography
+            variant="h4"
+            gutterBottom
+            sx={{ fontSize: isSmallScreen ? "28px" : null }}
+          >
+            <HourglassEmpty fontSize="medium" /> No Playlist Available, Please
+            Add One
           </Typography>
 
           {/* Description */}

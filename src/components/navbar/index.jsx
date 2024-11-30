@@ -65,7 +65,7 @@ const Navbar = () => {
                       letterSpacing: "0.2rem",
                     }}
                   >
-                    CLEAN YOUTUBE
+                    Clean•YouTube
                   </Typography>
                 </Link>
                 <Box sx={{ flexGrow: 1 }} />

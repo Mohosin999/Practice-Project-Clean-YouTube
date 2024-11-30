@@ -10,13 +10,23 @@ const Recents = () => {
   const itemArray = [];
   items.forEach((item) => itemArray.push(data[item]));
 
+  console.log("recents -> ", itemArray);
+
   return (
     <div>
       <Container maxWidth={"lg"} sx={{ paddingTop: 12, minHeight: "100vh" }}>
         {itemArray.length > 0 ? (
           <Grid container alignItems="stretch">
             {itemArray.map((item) => (
-              <Grid item xs={12} sm={6} md={4} lg={3} mb={2}>
+              <Grid
+                item
+                xs={12}
+                sm={6}
+                md={4}
+                lg={3}
+                mb={2}
+                key={item.playlistId}
+              >
                 <PlaylistCardItem
                   key={item.playlistId}
                   playlistId={item.playlistId}
