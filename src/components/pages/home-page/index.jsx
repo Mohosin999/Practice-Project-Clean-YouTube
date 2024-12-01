@@ -1,6 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import { useStoreState } from "easy-peasy";
-import { Box, Grid, Typography, useMediaQuery, useTheme } from "@mui/material";
+import {
+  Box,
+  Grid,
+  Typography,
+  useMediaQuery,
+  useTheme,
+  CircularProgress,
+} from "@mui/material";
 import { Container } from "@mui/system";
 import PlaylistCardItem from "../../playlist-card-item";
 import { HourglassEmpty } from "@mui/icons-material";
@@ -9,15 +16,44 @@ const HomePage = () => {
   const { data } = useStoreState((state) => state.playlists);
   const playlistArray = Object.values(data);
 
+  // Loading state for loader
+  const [loading, setLoading] = useState(false);
+
   // Responsive Design
   const theme = useTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
+
+  const handleCardClick = () => {
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+    }, 100);
+  };
 
   return (
     <Container
       maxWidth={"lg"}
       sx={{ paddingTop: isSmallScreen ? 10 : 12, minHeight: "100vh" }}
     >
+      {loading && (
+        <Box
+          sx={{
+            position: "fixed",
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            backgroundColor: "rgba(0, 0, 0, 0.6)",
+            zIndex: 1000,
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            backdropFilter: "blur(5px)", // Apply blur to the screen
+          }}
+        >
+          <CircularProgress color="secondary" />
+        </Box>
+      )}
       {playlistArray.length > 0 ? (
         <>
           {/* Playlist Grid */}
@@ -38,6 +74,7 @@ const HomePage = () => {
                   playlistTitle={item.playlistTitle}
                   channelTitle={item.channelTitle}
                   path={"home"}
+                  onCardClick={handleCardClick} // Pass click handler here
                 />
               </Grid>
             ))}
@@ -97,13 +134,13 @@ const HomePage = () => {
                 How It Works:
               </Typography>
               <Typography variant="body1" sx={{ marginBottom: 1 }}>
-                1️⃣ Save playlists for quick access.
+                1️⃣ Access your playlists from any device.
               </Typography>
               <Typography variant="body1" sx={{ marginBottom: 1 }}>
                 2️⃣ Explore new content distraction-free.
               </Typography>
               <Typography variant="body1" sx={{ marginBottom: 1 }}>
-                3️⃣ Access your playlists from any device.
+                3️⃣ Save playlists for quick access.
               </Typography>
               <Typography variant="body1">
                 4️⃣ Fully responsive interface.

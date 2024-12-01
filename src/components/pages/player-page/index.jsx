@@ -1,11 +1,9 @@
-import React, { useState, Suspense, lazy } from "react";
+import React, { useState } from "react";
 import { useStoreState } from "easy-peasy";
 import { Grid, TextField, useMediaQuery, useTheme } from "@mui/material";
 import { Container } from "@mui/system";
 import { useParams } from "react-router-dom";
-
-// Lazy load VideoCardItem component
-const VideoCardItem = lazy(() => import("../../video-card-item"));
+import VideoCardItem from "../../video-card-item";
 
 const PlayerPage = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -96,31 +94,15 @@ const PlayerPage = () => {
                 lg={3}
                 key={item.contentDetails.videoId}
               >
-                <Suspense
-                  fallback={
-                    <div
-                      style={{
-                        display: "flex",
-                        justifyContent: "center",
-                        alignItems: "center",
-                        height: "100%",
-                        textAlign: "center",
-                      }}
-                    >
-                      Loading video...
-                    </div>
-                  }
-                >
-                  <VideoCardItem
-                    title={item.title}
-                    thumbnails={item.thumbnails}
-                    videoId={item.contentDetails.videoId}
-                    videos={filteredPlaylistItem.map(
-                      (video) => video.contentDetails.videoId
-                    )}
-                    playlistId={playlistId}
-                  />
-                </Suspense>
+                <VideoCardItem
+                  title={item.title}
+                  thumbnails={item.thumbnails}
+                  videoId={item.contentDetails.videoId}
+                  videos={filteredPlaylistItem.map(
+                    (video) => video.contentDetails.videoId
+                  )}
+                  playlistId={playlistId}
+                />
               </Grid>
             ))}
           </Grid>

@@ -8,7 +8,7 @@ const recentModel = persist({
       state.items.splice(state.items.indexOf(payload), 1);
     }
     state.items.unshift(payload);
-    state.items = state.items.slice(0, 5);
+    state.items = state.items.slice(0, 8);
   }),
 
   removeFromRecent: action((state, payload) => {
