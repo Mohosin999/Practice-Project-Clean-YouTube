@@ -47,14 +47,14 @@ const Recents = () => {
               justifyContent: "center",
               minHeight: "50vh",
               textAlign: "center",
-              color: "text.secondary",
+              color: "#fff",
             }}
           >
             <Typography variant="h4" gutterBottom>
               📄 Empty Recent Page
             </Typography>
-            <Typography variant="body1">
-              You should visit a palylist at first
+            <Typography variant="body1" sx={{ color: "#B4B2B0" }}>
+              You should visit a palylist at first!
             </Typography>
           </Box>
         )}

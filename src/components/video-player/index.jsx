@@ -168,7 +168,10 @@ const VideoPlayer = () => {
   };
 
   return (
-    <Container maxWidth="lg" sx={{ mt: isSmallScreen ? 10 : 12, mb: 5 }}>
+    <Container
+      maxWidth="lg"
+      sx={{ pt: isSmallScreen ? 10 : 12, mb: 5, minHeight: "100vh" }}
+    >
       <Box
         sx={{
           position: "relative",

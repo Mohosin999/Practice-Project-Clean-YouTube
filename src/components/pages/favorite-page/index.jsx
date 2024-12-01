@@ -44,13 +44,13 @@ const Favorites = () => {
               justifyContent: "center",
               minHeight: "50vh",
               textAlign: "center",
-              color: "text.secondary",
+              color: "#fff",
             }}
           >
             <Typography variant="h4" gutterBottom>
               🗳️ Empty Favorite Page
             </Typography>
-            <Typography variant="body1">
+            <Typography variant="body1" sx={{ color: "#B4B2B0" }}>
               Start adding your favorite playlists to see them here!
             </Typography>
           </Box>
