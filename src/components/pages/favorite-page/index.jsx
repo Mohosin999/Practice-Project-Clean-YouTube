@@ -1,12 +1,19 @@
 import React from "react";
-import { useStoreState, useStoreActions } from "easy-peasy";
+import { useStoreState } from "easy-peasy";
 import { Container } from "@mui/system";
 import PlaylistCardItem from "../../playlist-card-item";
 import { Box, Grid, Typography, useMediaQuery, useTheme } from "@mui/material";
 
+/**
+ * Favorites Component
+ *
+ * @returns {JSX.Element} React Component
+ */
 const Favorites = () => {
+  // Retrieve the playlist data from the store
   const { data } = useStoreState((state) => state.playlists);
   const { items } = useStoreState((state) => state.favorites);
+
   const itemArray = [];
   items.forEach((item) => itemArray.push(data[item]));
 
