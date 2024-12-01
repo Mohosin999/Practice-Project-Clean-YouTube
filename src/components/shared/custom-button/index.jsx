@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Button } from "@mui/material";
+import { Button, useMediaQuery, useTheme } from "@mui/material";
 import { Link } from "react-router-dom";
 
 /**
@@ -13,22 +13,29 @@ import { Link } from "react-router-dom";
  * @param {string} text - The text to display on the button.
  * @param {React.ElementType} component - The component to use for rendering the button (e.g., `Link` or `button`).
  */
-const CustomButton = ({ to, onClick, icon: Icon, text, component = Link }) => (
-  <Button
-    variant="contained"
-    to={to}
-    component={component}
-    sx={{
-      color: "#efefef",
-      marginLeft: "1.5rem",
-      // marginBottom: "1rem",
-    }}
-    onClick={onClick}
-  >
-    {Icon && <Icon sx={{ marginRight: "5px" }} />}
-    {text}
-  </Button>
-);
+
+const CustomButton = ({ to, onClick, icon: Icon, text, component = Link }) => {
+  // Responsive Design
+  const theme = useTheme();
+  const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
+
+  return (
+    <Button
+      variant="contained"
+      to={to}
+      component={component}
+      sx={{
+        color: "#efefef",
+        marginLeft: "1rem",
+        marginBottom: isSmallScreen ? "0.5rem" : "0rem",
+      }}
+      onClick={onClick}
+    >
+      {Icon && <Icon sx={{ marginRight: "5px" }} />}
+      {text}
+    </Button>
+  );
+};
 
 // Prop validation using PropTypes
 CustomButton.propTypes = {

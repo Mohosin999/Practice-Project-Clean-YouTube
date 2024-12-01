@@ -10,7 +10,7 @@ import {
 } from "@mui/material";
 import { Container } from "@mui/system";
 import PlaylistCardItem from "../../playlist-card-item";
-import { HourglassEmpty } from "@mui/icons-material";
+import { HourglassEmpty, Warning } from "@mui/icons-material";
 import GoToTopButton from "../../shared/go-to-top-button";
 
 /**
@@ -44,10 +44,7 @@ const HomePage = () => {
   return (
     <>
       {/* Main Container */}
-      <Container
-        maxWidth={"lg"}
-        sx={{ paddingTop: isSmallScreen ? 10 : 12, minHeight: "100vh" }}
-      >
+      <Container maxWidth={"lg"} sx={{ paddingTop: 12, minHeight: "100vh" }}>
         {/* Loader Overlay */}
         {loading && (
           <Box
@@ -108,17 +105,12 @@ const HomePage = () => {
             }}
           >
             {/* Top Section: Title */}
-            <Typography
-              variant="h4"
-              gutterBottom
-              sx={{ fontSize: isSmallScreen ? "28px" : null }}
-            >
-              <HourglassEmpty fontSize="medium" /> No Playlist Available, Please
-              Add One
+            <Typography variant="h4" gutterBottom sx={{ marginBottom: 3 }}>
+              No Playlist Available, Please Add One!
             </Typography>
 
             {/* Description */}
-            <Typography
+            {/* <Typography
               variant="body1"
               sx={{ marginBottom: 4, color: "#B4B2B0" }}
             >
@@ -126,7 +118,7 @@ const HomePage = () => {
               Explore a distraction-free platform to search, save, and enjoy
               your playlists. For that, you have to add a playlist first using
               the playlist ID or URL.
-            </Typography>
+            </Typography> */}
 
             {/* Two-Box Layout */}
             <Box

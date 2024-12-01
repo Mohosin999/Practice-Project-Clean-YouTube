@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { List, Drawer, IconButton } from "@mui/material";
-import { Favorite, AllOut, Add } from "@mui/icons-material";
+import { Home, Favorite, AllOut, Add } from "@mui/icons-material";
 import MenuIcon from "@mui/icons-material/Menu";
 import CustomButton from "../custom-button";
 
@@ -40,9 +40,16 @@ const DrawerComp = ({ handleClickOpen }) => {
               display: "flex",
               flexDirection: "column",
               gap: 14,
-              margin: "16px 24px 0 0",
+              margin: "24px 24px 0 10px",
             }}
           >
+            {/* Navigation button to Home */}
+            <CustomButton
+              to="/"
+              icon={Home}
+              text="Home"
+              onClick={handleButtonClick}
+            />
             {/* Navigation button to Favorites */}
             <CustomButton
               to="/favorites"

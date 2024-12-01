@@ -9,7 +9,7 @@ import Typography from "@mui/material/Typography";
 import { Container } from "@mui/system";
 import DrawerComp from "../../components/shared/drawer";
 import PlaylistForm from "../playlist-form";
-import { Add, AllOut, Favorite } from "@mui/icons-material";
+import { Add, AllOut, Favorite, Home } from "@mui/icons-material";
 import CustomButton from "../shared/custom-button";
 
 /**
@@ -88,18 +88,28 @@ const Navbar = () => {
                 </Link>
                 <Box sx={{ flexGrow: 1 }} />
                 <Box sx={{ display: "flex", gap: 1 }}>
+                  {/* Home Button */}
+                  <CustomButton
+                    to="/"
+                    component={RouterLink}
+                    icon={Home}
+                    text="Home"
+                  />
+                  {/* Favorite Button */}
                   <CustomButton
                     to="/favorites"
                     component={RouterLink}
                     icon={Favorite}
                     text="Favorites"
                   />
+                  {/* Recent Button */}
                   <CustomButton
                     to="/recents"
                     component={RouterLink}
                     icon={AllOut}
                     text="Recents"
                   />
+                  {/* Action Button Named `Add Playlist` */}
                   <CustomButton
                     icon={Add}
                     text="Add Playlist"
