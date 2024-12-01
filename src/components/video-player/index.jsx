@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useStoreState } from "easy-peasy";
 import YouTube from "react-youtube";
 import { useLocation } from "react-router-dom";
@@ -7,6 +7,11 @@ import { ArrowBack, ArrowForward, Close } from "@mui/icons-material";
 import CustomIconButton from "../shared/custom-icon-button";
 
 const VideoPlayer = () => {
+  // Scroll to top when component is mounted
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   // Retrieve playlist data from the state using easy-peasy store
   const { data } = useStoreState((state) => state.playlists);
 
