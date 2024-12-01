@@ -8,7 +8,6 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import useSnackbar from "../../hooks/useSnackbar";
-import { Add } from "@mui/icons-material";
 
 const PlaylistForm = ({ open, handleClose }) => {
   const [state, setState] = useState("");
@@ -75,7 +74,7 @@ const PlaylistForm = ({ open, handleClose }) => {
             alignItems: "center",
           }}
         >
-          <Add /> Add Playlist
+          Add Playlist
         </DialogTitle>
         <DialogContent>
           <DialogContentText sx={{ color: "#B4B2B0" }}>
@@ -92,7 +91,7 @@ const PlaylistForm = ({ open, handleClose }) => {
             onChange={(e) => setState(e.target.value)}
             value={state}
             InputLabelProps={{
-              style: { color: "#fff" }, // Gold label color
+              style: { color: "#B4B2B0" }, // Gold label color
             }}
             sx={{
               backgroundColor: "#424242", // Slightly lighter gray background
@@ -104,7 +103,6 @@ const PlaylistForm = ({ open, handleClose }) => {
         <DialogActions>
           {/* <Button variant="outlined" onClick={handleClose}> */}
           <Button
-            variant="outlined"
             onClick={() => {
               handleClose();
               setState("");
@@ -112,9 +110,7 @@ const PlaylistForm = ({ open, handleClose }) => {
           >
             Cancel
           </Button>
-          <Button variant="contained" onClick={handleSubmit}>
-            Add Playlist
-          </Button>
+          <Button onClick={handleSubmit}>Add Playlist</Button>
         </DialogActions>
       </Dialog>
 

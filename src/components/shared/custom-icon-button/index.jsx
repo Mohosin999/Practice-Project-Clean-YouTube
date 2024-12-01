@@ -15,7 +15,7 @@ const CustomIconButton = ({
     backgroundColor: "#fff",
     color: "#222",
     "&:hover": { backgroundColor: "#ffc107" },
-    "&:disabled": { backgroundColor: "grey.400", color: "grey.600" },
+    "&:disabled": { backgroundColor: "#666" },
     width: isSmallScreen ? "32px" : "42px",
     height: isSmallScreen ? "32px" : "42px",
   };

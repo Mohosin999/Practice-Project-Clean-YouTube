@@ -23,7 +23,15 @@ const HomePage = () => {
           {/* Playlist Grid */}
           <Grid container alignItems="stretch" spacing={2}>
             {playlistArray.map((item) => (
-              <Grid item xs={12} sm={6} md={4} lg={3} key={item.playlistId}>
+              <Grid
+                item
+                xs={12}
+                sm={6}
+                md={4}
+                lg={3}
+                mb={2}
+                key={item.playlistId}
+              >
                 <PlaylistCardItem
                   playlistId={item.playlistId}
                   playlistThumbnail={item.playlistItems[0]?.thumbnails}

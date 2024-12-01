@@ -2,7 +2,7 @@ import React from "react";
 import { useStoreState, useStoreActions } from "easy-peasy";
 import { Container } from "@mui/system";
 import PlaylistCardItem from "../../playlist-card-item";
-import { Box, Grid, Typography } from "@mui/material";
+import { Box, Grid, Typography, useMediaQuery, useTheme } from "@mui/material";
 
 const Recents = () => {
   const { data } = useStoreState((state) => state.playlists);
@@ -10,13 +10,18 @@ const Recents = () => {
   const itemArray = [];
   items.forEach((item) => itemArray.push(data[item]));
 
-  console.log("recents -> ", itemArray);
+  // Responsive Design
+  const theme = useTheme();
+  const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
 
   return (
     <div>
-      <Container maxWidth={"lg"} sx={{ paddingTop: 12, minHeight: "100vh" }}>
+      <Container
+        maxWidth={"lg"}
+        sx={{ paddingTop: isSmallScreen ? 10 : 12, minHeight: "100vh" }}
+      >
         {itemArray.length > 0 ? (
-          <Grid container alignItems="stretch">
+          <Grid container alignItems="stretch" spacing={2}>
             {itemArray.map((item) => (
               <Grid
                 item
