@@ -6,18 +6,26 @@ import { useParams } from "react-router-dom";
 import VideoCardItem from "../../video-card-item";
 import GoToTopButton from "../../shared/go-to-top-button";
 
+/**
+ * PlayerPage Component
+ * Displays a list of videos within a playlist and provides search
+ * functionality.
+ */
 const PlayerPage = () => {
   const [searchQuery, setSearchQuery] = useState("");
 
+  // Get the playlist ID from URL parameters
   const { playlistId } = useParams();
+  // Access playlist data from the store
   const { data } = useStoreState((state) => state.playlists);
+  // Retrieve the current playlist using the ID
   const current = data[playlistId];
 
   // Responsive Design
   const theme = useTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
 
-  // Return a message or fallback if the playlist is not found
+  // If the playlist is not found, show a fallback message
   if (!current) {
     return (
       <Container
@@ -29,14 +37,15 @@ const PlayerPage = () => {
     );
   }
 
+  // Array of videos in the current playlist
   const videoItemArray = current.playlistItems;
 
-  // Filter playlists based on the search query
+  // Filter the video list based on the search query
   const filteredPlaylistItem = videoItemArray.filter((playlistItem) =>
     playlistItem.title.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
-  // Handle search query change
+  // Handle search input changes
   const handleSearchChange = (event) => {
     setSearchQuery(event.target.value);
   };

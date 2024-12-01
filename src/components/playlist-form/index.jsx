@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 import { useStoreActions, useStoreState } from "easy-peasy";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
@@ -9,6 +10,14 @@ import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import useSnackbar from "../../hooks/useSnackbar";
 
+/**
+ * PlaylistForm component for adding a playlist by URL or ID.
+ *
+ * @param {boolean} open - Controls the open/close state of the dialog.
+ * @param {Function} handleClose - Function to close the dialog.
+ *
+ * @returns {JSX.Element} The rendered PlaylistForm component.
+ */
 const PlaylistForm = ({ open, handleClose }) => {
   const [state, setState] = useState("");
   const [isError, setIsError] = useState(false);
@@ -18,6 +27,12 @@ const PlaylistForm = ({ open, handleClose }) => {
   const { getPlaylist } = useStoreActions((actions) => actions.playlists);
   const { data } = useStoreState((state) => state.playlists);
 
+  /**
+   * Handles the playlist form submission.
+   * - Validates the input URL or ID.
+   * - Fetches the playlist by ID.
+   * - Shows appropriate feedback messages via Snackbar.
+   */
   const handleSubmit = async () => {
     if (!state) {
       setIsError(true);
@@ -117,6 +132,12 @@ const PlaylistForm = ({ open, handleClose }) => {
       <SnackbarComponent />
     </>
   );
+};
+
+// PropTypes validation
+PlaylistForm.propTypes = {
+  open: PropTypes.bool.isRequired,
+  handleClose: PropTypes.func.isRequired,
 };
 
 export default PlaylistForm;

@@ -7,21 +7,31 @@ import { ArrowBack, ArrowForward, Close } from "@mui/icons-material";
 import CustomIconButton from "../shared/custom-icon-button";
 
 const VideoPlayer = () => {
+  // Retrieve playlist data from the state using easy-peasy store
   const { data } = useStoreState((state) => state.playlists);
 
+  // Use useLocation hook to get the current URL's location
   const location = useLocation();
+
+  // Extract the videoId from the URL's query parameters
   const videoId = new URLSearchParams(location.search).get("videoId");
+
+  // Extract playlistId and index from the URL's path
   const playlistId = location.pathname.split("/")[2];
   const index = location.pathname.split("/")[3];
+
+  // Get the playlist items from the state data
   const playlistItems = data[playlistId].playlistItems;
+
+  // Get the index of the last item in the playlist
   const lastItem = playlistItems.length - 1;
 
-  // Previous button logic
+  // Logic for previous button: calculate the previous video's index
   const prevIndex = parseInt(index) - 1;
   const prevItem = playlistItems[prevIndex];
   const prevVideoId = prevItem ? prevItem.contentDetails.videoId : "";
 
-  // Next button logic
+  // Logic for next button: calculate the next video's index
   const nextIndex = parseInt(index) + 1;
   const nextItem = playlistItems[nextIndex];
   const nextVideoId = nextItem ? nextItem.contentDetails.videoId : "";
@@ -30,6 +40,7 @@ const VideoPlayer = () => {
   const theme = useTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
 
+  // Set options for YouTube player, including autoplay and fullscreen
   const opts = {
     playerVars: {
       autoplay: 1,
@@ -39,6 +50,7 @@ const VideoPlayer = () => {
     width: "100%",
   };
 
+  // Handle the video player when it's ready to play
   const onPlayerReady = (event) => {
     event.target.playVideo();
   };

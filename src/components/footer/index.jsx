@@ -9,18 +9,27 @@ import {
 } from "@mui/material";
 import { Twitter, LinkedIn, GitHub, Facebook } from "@mui/icons-material";
 
+/**
+ * Footer component that displays contact information and social media links.
+ * It includes an email section with the ability to copy the email to the clipboard
+ * and social media icons with hover effects.
+ */
 const Footer = () => {
   const [isCopied, setIsCopied] = useState(false);
   const theme = useTheme();
   const isMediumScreen = useMediaQuery(theme.breakpoints.down("md"));
   const email = "mohosin.hasan.akash@gmail.com";
 
+  /**
+   * Handles the click event to copy the email to clipboard.
+   * Displays a "Copied" message when successful.
+   */
   const handleCopyEmail = () => {
     navigator.clipboard
       .writeText(email)
       .then(() => {
         setIsCopied(true);
-        setTimeout(() => setIsCopied(false), 3000); // Reset after 2 seconds
+        setTimeout(() => setIsCopied(false), 3000); // Reset after 3 seconds
       })
       .catch((err) => {
         console.error("Failed to copy email:", err);

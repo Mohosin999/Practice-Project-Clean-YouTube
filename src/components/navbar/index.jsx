@@ -12,14 +12,25 @@ import PlaylistForm from "../playlist-form";
 import { Add, AllOut, Favorite } from "@mui/icons-material";
 import CustomButton from "../shared/custom-button";
 
+/**
+ * Navbar component renders the header for the application, adjusting its layout
+ * based on the screen size. On small screens, it shows a drawer for navigation,
+ * while on larger screens, it displays additional buttons for user interactions.
+ */
 const Navbar = () => {
   const [open, setOpen] = useState(false);
   const isSmallScreen = useMediaQuery("(max-width:992px)");
 
+  /**
+   * Opens the PlaylistForm modal when the "Add Playlist" button is clicked
+   */
   const handleClickOpen = () => {
     setOpen(true);
   };
 
+  /**
+   * Closes the PlaylistForm modal
+   */
   const handleClose = () => {
     setOpen(false);
   };

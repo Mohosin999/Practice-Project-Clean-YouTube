@@ -1,15 +1,23 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 import { List, Drawer, IconButton } from "@mui/material";
+import { Favorite, AllOut, Add } from "@mui/icons-material";
 import MenuIcon from "@mui/icons-material/Menu";
-import { Link } from "react-router-dom";
 import CustomButton from "../custom-button";
 
-// Icons for the buttons
-import { Favorite, AllOut, Add } from "@mui/icons-material";
-
+/**
+ * DrawerComp Component
+ * A drawer menu component with navigation buttons for "Favorites", "Recents",
+ * and "Add Playlist". The drawer opens from the right side.
+ *
+ * @param {Function} handleClickOpen - A function to handle opening the "Add Playlist" dialog.
+ */
 const DrawerComp = ({ handleClickOpen }) => {
   const [openDrawer, setOpenDrawer] = useState(false);
 
+  /**
+   * Handles button click to close the drawer.
+   */
   const handleButtonClick = () => {
     setOpenDrawer(false);
   };
@@ -35,18 +43,21 @@ const DrawerComp = ({ handleClickOpen }) => {
               margin: "16px 24px 0 0",
             }}
           >
+            {/* Navigation button to Favorites */}
             <CustomButton
               to="/favorites"
               icon={Favorite}
               text="Favorites"
               onClick={handleButtonClick}
             />
+            {/* Navigation button to Recents */}
             <CustomButton
               to="/recents"
               icon={AllOut}
               text="Recents"
               onClick={handleButtonClick}
             />
+            {/* Button to add a new playlist */}
             <CustomButton
               onClick={() => {
                 handleClickOpen();
@@ -59,11 +70,17 @@ const DrawerComp = ({ handleClickOpen }) => {
         </List>
       </Drawer>
 
+      {/* Icon button to toggle the drawer */}
       <IconButton onClick={() => setOpenDrawer(!openDrawer)}>
         <MenuIcon sx={{ color: "#efefef" }} />
       </IconButton>
     </>
   );
+};
+
+// Prop validation using PropTypes
+DrawerComp.propTypes = {
+  handleClickOpen: PropTypes.func.isRequired,
 };
 
 export default DrawerComp;

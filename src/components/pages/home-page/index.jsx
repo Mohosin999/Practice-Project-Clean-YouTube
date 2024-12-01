@@ -13,7 +13,13 @@ import PlaylistCardItem from "../../playlist-card-item";
 import { HourglassEmpty } from "@mui/icons-material";
 import GoToTopButton from "../../shared/go-to-top-button";
 
+/**
+ * HomePage Component
+ * Displays a grid of playlists or a placeholder message if no playlists are
+ * available.
+ */
 const HomePage = () => {
+  // Access playlists from the store
   const { data } = useStoreState((state) => state.playlists);
   const playlistArray = Object.values(data);
 
@@ -24,6 +30,10 @@ const HomePage = () => {
   const theme = useTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
 
+  /**
+   * Handles click event for playlist cards.
+   * Shows a temporary loading animation when a card is clicked.
+   */
   const handleCardClick = () => {
     setLoading(true);
     setTimeout(() => {
@@ -33,10 +43,12 @@ const HomePage = () => {
 
   return (
     <>
+      {/* Main Container */}
       <Container
         maxWidth={"lg"}
         sx={{ paddingTop: isSmallScreen ? 10 : 12, minHeight: "100vh" }}
       >
+        {/* Loader Overlay */}
         {loading && (
           <Box
             sx={{
@@ -56,6 +68,8 @@ const HomePage = () => {
             <CircularProgress color="secondary" />
           </Box>
         )}
+
+        {/* Render playlists if available */}
         {playlistArray.length > 0 ? (
           <>
             {/* Playlist Grid */}
@@ -83,6 +97,7 @@ const HomePage = () => {
             </Grid>
           </>
         ) : (
+          // Placeholder for empty playlist state
           <Box
             sx={{
               marginTop: isSmallScreen ? 0 : 3,

@@ -1,14 +1,21 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { Stack } from "@mui/system";
 import { useStoreActions } from "easy-peasy";
-// import FavoriteIcon from "@mui/icons-material/Favorite";
-import useSnackbar from "../../../hooks/useSnackbar";
 import DeleteWithConfirm from "../delete-confirmation";
 import { Favorite } from "@mui/icons-material";
 
+/**
+ * IconButton Component
+ * Renders favorite and delete buttons based on the page context.
+ * Supports "home", "favorites", and "recents" paths.
+ *
+ * @param {string} id - The unique ID of the playlist.
+ * @param {string} path - The current page path ("home", "favorites", or "recents").
+ * @param {boolean} isFavorite - Indicates whether the playlist is marked as a favorite.
+ */
 const IconButton = ({ id, path, isFavorite }) => {
-  const { handleSnackbar, SnackbarComponent } = useSnackbar();
-
+  // Easy-Peasy actions for handling favorites, recent items, and playlists
   const { addToFavorite, removeFromFavorite } = useStoreActions(
     (actions) => actions.favorites
   );
@@ -16,9 +23,8 @@ const IconButton = ({ id, path, isFavorite }) => {
   const { removePlaylist } = useStoreActions((actions) => actions.playlists);
 
   /**
-   * Function to handle favorite related actions.
-   * Add a playlist to favorite or
-   * Remove a playlist from favorite
+   * Handles favorite actions.
+   * Adds or removes the playlist from favorites based on its current state.
    */
   const handleFavoriteActions = () => {
     if (isFavorite) {
@@ -29,10 +35,9 @@ const IconButton = ({ id, path, isFavorite }) => {
   };
 
   /**
-   * Function to remove playlist.
-   * Also remove playlist from favorite and recent.
+   * Deletes the playlist and removes it from favorites and recent items.
    *
-   * @param {string} id - This is a playlist id.
+   * @param {string} id - The ID of the playlist to be deleted.
    */
   const handleDeletePlaylist = (id) => {
     removePlaylist(id);
@@ -90,6 +95,13 @@ const IconButton = ({ id, path, isFavorite }) => {
       {path === "recents" && null}
     </div>
   );
+};
+
+// Prop validation using PropTypes
+IconButton.propTypes = {
+  id: PropTypes.string.isRequired,
+  path: PropTypes.oneOf(["home", "favorites", "recents"]).isRequired,
+  isFavorite: PropTypes.bool.isRequired,
 };
 
 export default IconButton;
