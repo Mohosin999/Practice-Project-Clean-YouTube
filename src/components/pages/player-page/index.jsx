@@ -4,6 +4,7 @@ import { Grid, TextField, useMediaQuery, useTheme } from "@mui/material";
 import { Container } from "@mui/system";
 import { useParams } from "react-router-dom";
 import VideoCardItem from "../../video-card-item";
+import GoToTopButton from "../../shared/go-to-top-button";
 
 const PlayerPage = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -110,6 +111,9 @@ const PlayerPage = () => {
           <h3 style={{ textAlign: "center" }}>No videos found!</h3>
         )}
       </Container>
+
+      {/* Go to Top Button */}
+      <GoToTopButton />
     </div>
   );
 };
