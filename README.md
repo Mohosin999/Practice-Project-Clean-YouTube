@@ -14,7 +14,7 @@ Clean YouTube is a user-friendly web application designed to enhance your video-
 
 ## 💻 Technologies & Tools Used
 
-- React
+- React.js
 - React Router DOM
 - React Youtube
 - YouTube Data API (Used to fetch and manage YouTube playlists and videos)
