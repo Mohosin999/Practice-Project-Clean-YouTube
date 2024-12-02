@@ -10,8 +10,10 @@ import {
 } from "@mui/material";
 import { Container } from "@mui/system";
 import PlaylistCardItem from "../../playlist-card-item";
-import { HourglassEmpty, Warning } from "@mui/icons-material";
+import { Add, HourglassEmpty, Warning } from "@mui/icons-material";
 import GoToTopButton from "../../shared/go-to-top-button";
+import CustomButton from "../../shared/custom-button";
+import PlaylistForm from "../../playlist-form";
 
 /**
  * HomePage Component
@@ -19,16 +21,32 @@ import GoToTopButton from "../../shared/go-to-top-button";
  * available.
  */
 const HomePage = () => {
+  const [loading, setLoading] = useState(false);
+  const [open, setOpen] = useState(false);
+
   // Access playlists from the store
   const { data } = useStoreState((state) => state.playlists);
   const playlistArray = Object.values(data);
 
-  // Loading state for loader
-  const [loading, setLoading] = useState(false);
+  // const isSmallScreen = useMediaQuery("(max-width:992px)");
 
   // Responsive Design
   const theme = useTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
+
+  /**
+   * Opens the PlaylistForm modal when the "Add Playlist" button is clicked
+   */
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  /**
+   * Closes the PlaylistForm modal
+   */
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   /**
    * Handles click event for playlist cards.
@@ -105,83 +123,54 @@ const HomePage = () => {
             }}
           >
             {/* Top Section: Title */}
-            <Typography variant="h4" gutterBottom sx={{ marginBottom: 3 }}>
-              No Playlist Available, Please Add One!
-            </Typography>
+            <div>
+              <span style={{ fontSize: "32px", color: "#ffc107" }}>
+                OOPS! 😔
+              </span>
+              <Typography variant="h4" gutterBottom sx={{ marginBottom: 3 }}>
+                No Playlists Available! Add One to Begin Your Journey! 🎥
+              </Typography>
+            </div>
 
-            {/* Description */}
-            {/* <Typography
-              variant="body1"
-              sx={{ marginBottom: 4, color: "#B4B2B0" }}
-            >
-              Organize and manage your favorite YouTube playlists seamlessly.
-              Explore a distraction-free platform to search, save, and enjoy
-              your playlists. For that, you have to add a playlist first using
-              the playlist ID or URL.
-            </Typography> */}
+            <div>
+              {/* Action Button Named `Add Playlist` */}
+              <CustomButton
+                icon={Add}
+                text="Add Playlist"
+                onClick={handleClickOpen}
+                marginLeft="0rem"
+              />
 
-            {/* Two-Box Layout */}
+              <PlaylistForm open={open} handleClose={handleClose} />
+            </div>
+
+            {/* Instruction Card */}
             <Box
               sx={{
-                display: "flex",
-                flexDirection: { xs: "column", md: "row" },
-                gap: 4,
-                justifyContent: "center",
+                marginTop: 5,
+                padding: 3,
+                borderRadius: 2,
+                backgroundColor: "#2d2d2d",
+                boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.2)",
+                maxWidth: isSmallScreen ? "100%" : "70%",
+                marginX: "auto",
+                color: "#ddd",
               }}
             >
-              {/* Left Box: Instruction */}
-              <Box
-                sx={{
-                  flex: 1,
-                  padding: 3,
-                  borderRadius: 2,
-                  backgroundColor: "#292929",
-                  textAlign: "center",
-                }}
-              >
-                <Typography variant="h5" gutterBottom>
-                  How It Works:
-                </Typography>
-                <Typography variant="body1" sx={{ marginBottom: 1 }}>
-                  1️⃣ Access your playlists from any device.
-                </Typography>
-                <Typography variant="body1" sx={{ marginBottom: 1 }}>
-                  2️⃣ Explore new content distraction-free.
-                </Typography>
-                <Typography variant="body1" sx={{ marginBottom: 1 }}>
-                  3️⃣ Save playlists for quick access.
-                </Typography>
-                <Typography variant="body1">
-                  4️⃣ Fully responsive interface.
-                </Typography>
-              </Box>
-
-              {/* Right Box: Features */}
-              <Box
-                sx={{
-                  flex: 1,
-                  padding: 3,
-                  borderRadius: 2,
-                  backgroundColor: "#292929",
-                  textAlign: "center",
-                }}
-              >
-                <Typography variant="h5" gutterBottom>
-                  Features:
-                </Typography>
-                <Typography variant="body1" sx={{ marginBottom: 1 }}>
-                  ✅ Save and organize playlists in one place.
-                </Typography>
-                <Typography variant="body1" sx={{ marginBottom: 1 }}>
-                  ✅ Clean and user-friendly interface.
-                </Typography>
-                <Typography variant="body1" sx={{ marginBottom: 1 }}>
-                  ✅ Explore playlists seamlessly.
-                </Typography>
-                <Typography variant="body1">
-                  ✅ Mobile-friendly design.
-                </Typography>
-              </Box>
+              <Typography variant="h6" gutterBottom sx={{ color: "#ffc107" }}>
+                📝 How to Add a Playlist:
+              </Typography>
+              <Typography variant="body2" gutterBottom sx={{ marginTop: 1 }}>
+                🔍 Go to YouTube and find the playlist you want to add.
+              </Typography>
+              <Typography variant="body2" gutterBottom>
+                📋 Copy the playlist's link or ID from the browser's address
+                bar.
+              </Typography>
+              <Typography variant="body2">
+                ➕ Paste it into the form and hit the "Add Playlist" button to
+                start managing your playlists!
+              </Typography>
             </Box>
           </Box>
         )}

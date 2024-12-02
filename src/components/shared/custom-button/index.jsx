@@ -12,9 +12,17 @@ import { Link } from "react-router-dom";
  * @param {React.ElementType} icon - The icon component to render inside the button.
  * @param {string} text - The text to display on the button.
  * @param {React.ElementType} component - The component to use for rendering the button (e.g., `Link` or `button`).
+ * @param {string} className
  */
 
-const CustomButton = ({ to, onClick, icon: Icon, text, component = Link }) => {
+const CustomButton = ({
+  to,
+  onClick,
+  icon: Icon,
+  text,
+  component = Link,
+  marginLeft,
+}) => {
   // Responsive Design
   const theme = useTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
@@ -26,7 +34,7 @@ const CustomButton = ({ to, onClick, icon: Icon, text, component = Link }) => {
       component={component}
       sx={{
         color: "#efefef",
-        marginLeft: "1rem",
+        marginLeft: marginLeft ? marginLeft : "1rem",
         marginBottom: isSmallScreen ? "0.5rem" : "0rem",
       }}
       onClick={onClick}
@@ -44,6 +52,7 @@ CustomButton.propTypes = {
   icon: PropTypes.elementType,
   text: PropTypes.string.isRequired,
   component: PropTypes.elementType,
+  marginLeft: PropTypes.string,
 };
 
 // Default Props

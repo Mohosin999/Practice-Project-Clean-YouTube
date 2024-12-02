@@ -7,7 +7,10 @@ import { ArrowBack, ArrowForward, Close } from "@mui/icons-material";
 import CustomIconButton from "../shared/custom-icon-button";
 
 const VideoPlayer = () => {
-  // Scroll to top when component is mounted
+  /**
+   * Scroll to top when component is mounted
+   * It is done because when goes to this page, it always focus on top
+   */
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);

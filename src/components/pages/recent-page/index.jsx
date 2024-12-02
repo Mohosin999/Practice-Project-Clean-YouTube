@@ -62,7 +62,7 @@ const Recents = () => {
               📄 Empty Recent Page
             </Typography>
             <Typography variant="body1" sx={{ color: "#B4B2B0" }}>
-              You should visit a palylist at first!
+              You should visit a palylist at first to see them here!
             </Typography>
           </Box>
         )}
