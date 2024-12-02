@@ -3,7 +3,7 @@
 ## 📚 Table of Contents
 
 - [Description](#-description)
-- [Technologies & Tools Used](#-technologies-&-tools-used)
+- [Technologies & Tools Used](#-technologies--tools-used)
 - [Features](#-features)
 - [Benefits](#-benefits)
 - [Setup and Installation](#-setup-and-installation)
