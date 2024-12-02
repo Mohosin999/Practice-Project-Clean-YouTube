@@ -54,7 +54,8 @@ const VideoPlayer = () => {
       autoplay: 1,
       fullscreen: 1,
     },
-    height: isSmallScreen ? "200" : "500",
+    // height: isSmallScreen ? "200" : "500",
+    height: "100%",
     width: "100%",
   };
 
@@ -64,10 +65,7 @@ const VideoPlayer = () => {
   };
 
   return (
-    <Container
-      maxWidth="lg"
-      sx={{ pt: isSmallScreen ? 10 : 12, mb: 5, minHeight: "100vh" }}
-    >
+    <Container maxWidth="lg" sx={{ pt: 10, mb: 5, minHeight: "100vh" }}>
       <Box
         sx={{
           position: "relative",
