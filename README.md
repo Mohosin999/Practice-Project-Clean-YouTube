@@ -3,14 +3,25 @@
 ## 📚 Table of Contents
 
 - [Description](#-description)
+- [Technologies & Tools Used](#-technologies-&-tools-used)
 - [Features](#-features)
 - [Benefits](#-benefits)
-- [Technology Stack](#-technology-stack)
 - [Setup and Installation](#-setup-and-installation)
 
 ## 📖 Description
 
 Clean YouTube is a user-friendly web application designed to enhance your video-watching experience on YouTube. By providing a clean and distraction-free interface, it ensures that users can focus solely on their selected videos without interruptions from ads or cluttered layouts. Users can manage playlists, keep track of recently visited playlists, and save their favorites, all while enjoying a seamless and enjoyable experience.
+
+## 💻 Technologies & Tools Used
+
+- React
+- React Router DOM
+- React Youtube
+- YouTube Data API (Used to fetch and manage YouTube playlists and videos)
+- Material UI
+- EasyPeasy (For state management)
+- Axios
+- PropTypes
 
 ## 🔆 Features
 
@@ -41,17 +52,6 @@ Clean YouTube is a user-friendly web application designed to enhance your video-
 - Distraction-free environment tailored for focused video consumption.
 - Efficient playlist management with favorites and recent tracking.
 - Simple yet powerful controls for adding, managing, and removing playlists.
-
-## 💻 Technology Stack
-
-- React
-- React Router DOM
-- React Youtube
-- YouTube Data API (Used to fetch and manage YouTube playlists and videos)
-- Material UI
-- EasyPeasy (For state management)
-- Axios
-- PropTypes
 
 ## 🚀 Setup and Installation
 
