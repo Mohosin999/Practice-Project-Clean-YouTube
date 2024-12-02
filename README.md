@@ -47,6 +47,7 @@ Clean YouTube is a user-friendly web application designed to enhance your video-
 - React
 - React Router DOM
 - React Youtube
+- YouTube Data API (Used to fetch and manage YouTube playlists and videos)
 - Material UI
 - EasyPeasy (For state management)
 - Axios
@@ -54,39 +55,33 @@ Clean YouTube is a user-friendly web application designed to enhance your video-
 
 ## 🚀 Setup and Installation
 
-Follow these steps to set up the ShoeStore backend on your local machine:
+Follow these steps to set up the Clean YouTube Application on your local machine:
 
 ### 1. `Clone the Repository:`
 
 ```
-https://github.com/Mohosin999/Clean-YouTube-Project.git
+https://github.com/Mohosin999/Clean-YouTube-Application.git
 ```
 
 ### 2. `Navigate to the Project Directory:`
 
-Go to your project directory that your already created.
+Go to the project directory that you've just cloned.
 
 ```
-cd your-repo
+cd Clean-YouTube-Application
 ```
 
 ### 3. `Create .env File:`
 
-Create a **.env** file in the root directory and add the below key -
+Create a **.env** file in the root directory and add the following key -
 
 ```
-VITE_YOUTUBE_API_KEY=<your api key from google developer console>
+VITE_YOUTUBE_API_KEY=<your API key from Google Developer Console>
 ```
 
 ### 4. `Install Dependencies:`
 
-Install all dependencies by typing this in your terminal.
-
-```
-yarn
-```
-
-If **yarn** not worked, try it -
+Install all the dependencies by typing the following in your terminal.
 
 ```
 yarn install
