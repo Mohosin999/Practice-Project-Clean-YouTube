@@ -13,9 +13,9 @@ Clean YouTube is a user-friendly web application designed to enhance your video-
 
 ## 🔆 Features
 
-**`Playlist Integration:`**
+**`Add Playlists by ID or URL:`**
 
-- Users can effortlessly copy and paste YouTube playlist or video links into the project, instantly displaying the content within the interface. This streamlined process ensures a user-friendly experience.
+Users can quickly add a playlist by pasting its YouTube URL or Playlist ID, ensuring convenience and speed.
 
 **`Add and Remove Playlists:`**
 
