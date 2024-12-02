@@ -9,7 +9,7 @@
 
 ## 📖 Description
 
-CleanTube is a revolutionary project designed to provide users with a seamless and distraction-free YouTube viewing experience. Tired of annoying ads interrupting your favorite playlists? Look no further – CleanTube is here to transform the way you enjoy YouTube content. Here, you can add many playlists, along with you can remove any playlist. Also you can add your most-loved playlist in favorites and remove any playlist from favorites. You can check your watching history like youtube.
+Clean YouTube is a user-friendly web application designed to enhance your video-watching experience on YouTube. By providing a clean and distraction-free interface, it ensures that users can focus solely on their selected videos without interruptions from ads or cluttered layouts. Users can manage playlists, keep track of recently visited playlists, and save their favorites, all while enjoying a seamless and enjoyable experience.
 
 ## 🔆 Features
 
